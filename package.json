@@ -1,0 +1,31 @@
+{
+  "name": "auth-task-manager-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "browserify": "^16.2.2",
+    "live-server": "^1.2.0",
+    "run-all": "^1.0.1",
+    "watchify": "^3.11.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "buildSign": "browserify scripts/signin/main.js -o bundle.js",
+    "watchSign": "watchify scripts/signin/main.js -o bundle.js",
+    "dev-server": "live-server .",
+    "dev": "run-all \"npm run watchSign\" \"npm run dev-server\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brandoncyu/auth-task-manager-frontend-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Brandoncyu/auth-task-manager-frontend-/issues"
+  },
+  "homepage": "https://github.com/Brandoncyu/auth-task-manager-frontend-#readme"
+}
