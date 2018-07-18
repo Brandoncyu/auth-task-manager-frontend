@@ -1,30 +1,64 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Sign In</title>
+  <!DOCTYPE html>
+  <html>
+
   <head>
     <meta charset="utf-8">
     <title>Sign In</title>
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <title>Sign In</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-        <script defer="defer" src="bundle.js" charset="utf-8"></script>
-      </head>
-      <body>
-        <div class="container">
-          <div class="row d-flex justify-content-center">
-            <div class="col text-right p-4">
-              <button type="button" id="login" class="btn btn-link text-center">Login</button>
-            </div>
-            <div class="col text-left p-4">
-              <button type="button" id="register" class="btn btn-link">Register</button>
-            </div>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script defer="defer" src="bundle.js" charset="utf-8"></script>
+  </head>
+
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img src="././images/favicon-1024.png" width="30" height="30" class="d-inline-block align-top"> Task Manager
+      </a>
+      <div class="inline">
+        <button id="login" type="button" class="btn btn-outline-primary m-2">Login</button>
+        <button id="register" type="button" class="btn btn-outline-info m-2">Register</button>
+      </div>
+    </nav>
+
+    <!-- Login & Register Form Container -->
+    <div class="container">
+      <div class="row justify-content-center mt-3">
+        <div class="col-6" id="form-container">
+        </div>
+      </div>
+    </div>
+
+    <!-- List Container -->
+    <div class="container" style="display: none">
+      <div class="row">
+        <div class="col" id="all-list">
+          <h3>All Lists</h3>
+          <div class="card-group" id="all-group">
+
           </div>
-          <div class="row">
-            <div class="col-5"></div>
-            <div class="col" id="form-container"></div>
-            <div class="col-5"></div>
+        </div>
+        <div class="col" id="doing">
+          <h3>Doing</h3>
+          <div class="card-group" id="doing-group">
+
           </div>
-        </body>
-      </html>
+        </div>
+        <div class="col" id="done">
+          <h3>Done</h3>
+          <div class="card-group" id="done-group">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+
+  </html>
