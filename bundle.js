@@ -1,15 +1,21 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 const loginTemplate = require('../templates/login')
 const registerTemplate = require('../templates/register')
-const login = document.getElementById('login')
-const register = document.getElementById('register')
+const login = document.getElementById('login-button')
+const register = document.getElementById('register-button')
 
 login.addEventListener('click', function() {
   const container = document.getElementById('form-container')
   container.innerHTML = loginTemplate()
 
+  let loginForm = document.getElementById('login')
+  loginForm.addEventListener('submit', function(event) {
+    event.preventDefault()
+    let loginField = document.getElementById('login-email').value
+    let passwordField = document.getElementById('pword').value
+    console.log(loginField, passwordField)
+  })
 })
-
 
 register.addEventListener('click', function() {
   const container = document.getElementById('form-container')
