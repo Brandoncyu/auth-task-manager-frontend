@@ -5,11 +5,7 @@ const loginTemplate = () => {
     <form id="login">
       <div class="form-group">
         <label for="login-email">Email address</label>
-<<<<<<< HEAD
-        <input type="email" class="form-control" id="login-email" aria-describedby="emailHelp" placeholder="Enter Email" required>
-=======
         <input type="email" class="form-control" id="login-email" aria-describedby="emailHelp" placeholder="Enter email" value="student@galvanize.com" required>
->>>>>>> master
       </div>
       <div class="form-group">
         <label for="login-password">Password</label>
