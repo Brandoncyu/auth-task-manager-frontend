@@ -4,6 +4,7 @@ const login = document.getElementById('login-button')
 const register = document.getElementById('register-button')
 const listButton = document.getElementById('list-button')
 const newListTemplate = require('./templates/newList')
+window.baseURL = `https://whispering-shore-93216.herokuapp.com`
 
 login.addEventListener('click', loginForm)
 

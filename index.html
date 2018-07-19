@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <meta charset="utf-8">
-  <title>Sign In</title>
-  <!DOCTYPE html>
-  <html>
-
   <head>
     <meta charset="utf-8">
     <title>Sign In</title>
@@ -16,129 +10,133 @@
       <head>
         <meta charset="utf-8">
         <title>Sign In</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-        <link rel="stylesheet" href="./styles/styles.css">
-        <link rel="icon" href="./favicon.ico">
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script defer="defer" src="bundle.js" charset="utf-8"></script>
+        <!DOCTYPE html>
+        <html>
 
-      </head>
+          <head>
+            <meta charset="utf-8">
+            <title>Sign In</title>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+            <link rel="stylesheet" href="./styles/styles.css">
+            <link rel="icon" href="./favicon.ico">
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+            <script defer="defer" src="bundle.js" charset="utf-8"></script>
 
-      <body>
+          </head>
 
-        <!-- NAVBAR -->
-        <nav class="navbar navbar-light bg-light">
-          <a class="navbar-brand" href="#">
-            <img src="././images/favicon-1024.png" width="30" height="30" class="d-inline-block align-top">
-            TASK MANAGER
-          </a>
+          <body>
 
-      <!-- NAVBAR BUTTONS -->
-      <div id="nav-buttons">
+            <!-- NAVBAR -->
+            <nav class="navbar navbar-light bg-light">
+              <a class="navbar-brand" href="#">
+                <img src="././images/favicon-1024.png" width="30" height="30" class="d-inline-block align-top">
+                TASK MANAGER
+              </a>
 
-        <span id="gate-buttons" style="display: none">
-              <button id="task-button" type="button" class="btn btn-outline-warning m-2">All Tasks</button>
-              <button id="list-button" type="button" class="btn btn-outline-success m-2">New List</button>
-              <button id="logout-button" type="button" class="btn btn-outline-danger m-2">Logout</button>
-            </span>
+              <!-- NAVBAR BUTTONS -->
+              <div id="nav-buttons">
 
-        <span id="key-buttons" style="display: block">
-              <button id="login-button" type="button" class="btn btn-outline-primary m-2">Login</button>
-              <button id="register-button" type="button" class="btn btn-outline-info m-2">Register</button>
-            </span>
+                <span id="gate-buttons" style="display: none">
+                  <button id="task-button" type="button" class="btn btn-outline-warning m-2">All Tasks</button>
+                  <button id="list-button" type="button" class="btn btn-outline-success m-2">New List</button>
+                  <button id="logout-button" type="button" class="btn btn-outline-danger m-2">Logout</button>
+                </span>
 
-      </div>
-    </nav>
+                <span id="key-buttons" style="display: block">
+                  <button id="login-button" type="button" class="btn btn-outline-primary m-2">Login</button>
+                  <button id="register-button" type="button" class="btn btn-outline-info m-2">Register</button>
+                </span>
 
-    <!-- LOGIN & REGISTER & LIST FORM CONTAINER -->
-    <div class="container-fluid">
-      <div class="row justify-content-center mt-3">
-        <div class="col-6 p-4 border rounded" id="form-container"></div>
-      </div>
-    </div>
-
-    <!-- LIST & TASKS CONTAINER -->
-    <div class="container-fluid">
-      <div class="row justify-content-center">
-
-        <!-- LISTS & TASKS COLUMN -->
-        <div class="col" id="all-list">
-          <h3 class="text-center">All Lists</h3>
-
-          <!-- ALL LISTS -->
-          <div class="card-group" id="all-group"></div>
-          <div class="list-group">
-
-            <a class="list-group-item list-group-item-action active d-flex justify-content-between align-items-center" data-id="${task-id}" data-toggle="list" href="#${task-id}" role="tab">${list-title}
-              <span id="remove-list-button" class="badge badge-danger badge-pill">remove</span>
-            </a>
-
-            <a class="list-group-item list-group-item-action" data-id="${task-id}" data-toggle="list" href="#${task-id}" role="tab">${list-title}
-            </a>
-          </div>
-
-          <!-- TASKS FORM -->
-          <div class="mt-2 p-4 border rounded">
-            <form>
-              <h4>Create a New Task</h4>
-              <hr>
-              <div class="form-group">
-                <label for="name">Title</label>
-                <input type="text" class="form-control" required="required">
               </div>
-              <div class="form-group">
-                <label for="content">Description</label>
-                <textarea type="text" class="form-control" rows="3"></textarea>
+            </nav>
+
+            <!-- LOGIN & REGISTER & LIST FORM CONTAINER -->
+            <div class="container-fluid">
+              <div class="row justify-content-center mt-3" id="form-container"></div>
+            </div>
+
+            <!-- LIST & TASKS CONTAINER -->
+            <div class="container-fluid">
+              <div class="row justify-content-center">
+
+                <!-- LISTS & TASKS COLUMN -->
+                <div class="col" id="all-list">
+                  <h3 class="text-center">All Lists</h3>
+
+                  <!-- ALL LISTS -->
+                  <div class="card-group" id="all-group"></div>
+                  <div class="list-group">
+
+                    <a class="list-group-item list-group-item-action active d-flex justify-content-between align-items-center" data-id="${task-id}" data-toggle="list" href="#${task-id}" role="tab">${list-title}
+                      <span id="remove-list-button" class="badge badge-danger badge-pill">remove</span>
+                    </a>
+
+                    <a class="list-group-item list-group-item-action" data-id="${task-id}" data-toggle="list" href="#${task-id}" role="tab">${list-title}
+                    </a>
+                  </div>
+
+                  <!-- TASKS FORM -->
+                  <div class="mt-2 p-4 border rounded">
+                    <form>
+                      <h4>Create a New Task</h4>
+                      <hr>
+                      <div class="form-group">
+                        <label for="name">Title</label>
+                        <input type="text" class="form-control" required="required">
+                      </div>
+                      <div class="form-group">
+                        <label for="content">Description</label>
+                        <textarea type="text" class="form-control" rows="3"></textarea>
+                      </div>
+                      <button type="submit" class="btn btn-warning">Create New Task</button>
+                    </form>
+
+                  </div>
+
+                </div>
+
+                <!-- DOING COLUMN -->
+                <div class="col" id="doing">
+                  <h3 class="text-center">Doing</h3>
+                  <div class="card-group" id="doing-group"></div>
+
+                  <!-- DOING CARDS -->
+                  <div class="card mt-2">
+                    <div class="card-body">
+                      <h5 class="card-title">Doing Title</h5>
+                      <hr>
+                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                      <button type="submit" class="btn btn-success">Completed</button>
+                    </div>
+                    <div class="card-footer text-muted">
+                      2 days ago
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- DOING COLUMN -->
+                <div class="col" id="done">
+                  <h3 class="text-center">Done</h3>
+                  <div class="card-group" id="done-group"></div>
+
+                  <!-- DONE CARDS -->
+                  <div class="card mt-2">
+                    <div class="card-body">
+                      <h5 class="card-title">Done Title</h5>
+                      <hr>
+                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                      <button type="submit" class="btn btn-danger">Remove</button>
+                    </div>
+                    <div class="card-footer text-muted">
+                      2 days ago
+                    </div>
+                  </div>
+
+                </div>
               </div>
-              <button type="submit" class="btn btn-warning">Create New Task</button>
-            </form>
-
-          </div>
-
-        </div>
-
-        <!-- DOING COLUMN -->
-        <div class="col" id="doing">
-          <h3 class="text-center">Doing</h3>
-          <div class="card-group" id="doing-group"></div>
-
-          <!-- DOING CARDS -->
-          <div class="card mt-2">
-            <div class="card-body">
-              <h5 class="card-title">Doing Title</h5>
-              <hr>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <button type="submit" class="btn btn-success">Completed</button>
             </div>
-            <div class="card-footer text-muted">
-              2 days ago
-            </div>
-          </div>
 
-        </div>
+          </body>
 
-        <!-- DOING COLUMN -->
-        <div class="col" id="done">
-          <h3 class="text-center">Done</h3>
-          <div class="card-group" id="done-group"></div>
-
-          <!-- DONE CARDS -->
-          <div class="card mt-2">
-            <div class="card-body">
-              <h5 class="card-title">Done Title</h5>
-              <hr>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <button type="submit" class="btn btn-danger">Remove</button>
-            </div>
-            <div class="card-footer text-muted">
-              2 days ago
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-  </body>
-
-  </html>
+        </html>
