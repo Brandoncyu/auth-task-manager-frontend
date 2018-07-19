@@ -10,6 +10,8 @@ function verify(event) {
     password: passwordField
   }).then(response => {
     const token = localStorage.setItem('token', response.data.token)
+    document.getElementById('login-email').value = ''
+    document.getElementById('login-password').value = ''
 
     return axios.get(`${baseURL}/api/lists`, {
       headers: {
