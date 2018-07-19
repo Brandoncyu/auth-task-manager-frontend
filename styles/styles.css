@@ -1,0 +1,11 @@
+textarea {
+  white-space: pre-line;
+}
+
+h3.text-center {
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  padding: 4px;
+  /* margin: 2px; */
+  /* padding: 20px; */
+}

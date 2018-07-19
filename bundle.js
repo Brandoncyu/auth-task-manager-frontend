@@ -42,12 +42,27 @@ const loginForm = require('./login/00-loginform')
 const registrationForm = require('./registration/00-registrationform')
 const login = document.getElementById('login-button')
 const register = document.getElementById('register-button')
+const listButton = document.getElementById('list-button')
+const newListTemplate = require('./templates/newList')
 
 login.addEventListener('click', loginForm)
 
 register.addEventListener('click', registrationForm)
 
-},{"./login/00-loginform":1,"./registration/00-registrationform":4}],4:[function(require,module,exports){
+listButton.addEventListener('click', function() {
+  const container = document.getElementById('form-container')
+  container.innerHTML = newListTemplate()
+
+  let listForm = document.getElementById('list-form')
+  listForm.addEventListener('submit', function(event) {
+    event.preventDefault()
+    let listTitleField = document.getElementById('list-title').value
+    console.log(listTitleField)
+
+  })
+})
+
+},{"./login/00-loginform":1,"./registration/00-registrationform":4,"./templates/newList":6}],4:[function(require,module,exports){
 const registerTemplate = require('../templates/register')
 
 function registrationForm() {
@@ -58,41 +73,61 @@ function registrationForm() {
 
 module.exports = registrationForm
 
-},{"../templates/register":6}],5:[function(require,module,exports){
+},{"../templates/register":7}],5:[function(require,module,exports){
 const loginTemplate = () => {
   return `
     <h3>Login</h3>
-    <br>
+    <hr>
     <form id="login">
       <div class="form-group">
         <label for="login-email">Email address</label>
+<<<<<<< HEAD
+        <input type="email" class="form-control" id="login-email" aria-describedby="emailHelp" placeholder="Enter Email" required>
+=======
         <input type="email" class="form-control" id="login-email" aria-describedby="emailHelp" placeholder="Enter email" value="student@galvanize.com" required>
+>>>>>>> master
       </div>
       <div class="form-group">
         <label for="login-password">Password</label>
         <input type="password" class="form-control" id="pword" placeholder="Password" value="password" required>
       </div>
-      <button type="submit" class="btn btn-outline-primary" id="sumbit-login">Login!</button>
+      <button type="submit" class="btn btn-primary" id="sumbit-login">Login</button>
     </form>`
 }
 
 module.exports = loginTemplate
 
 },{}],6:[function(require,module,exports){
+const newListTemplate = () => {
+  return `
+  <h3>New List</h3>
+  <hr>
+  <form id="list-form">
+    <div class="form-group">
+      <label for="list-title">Title</label>
+      <input type="text" class="form-control" id="list-title" placeholder="Enter List Title" required>
+    </div>
+    <button type="submit" class="btn btn-success" id="sumbit-list">Create New List</button>
+  </form>`
+}
+
+module.exports = newListTemplate
+
+},{}],7:[function(require,module,exports){
 const registerTemplate = () => {
   return `
     <h3>Register</h3>
-    <br>
+    <hr>
     <form id="register">
       <div class="form-group">
         <label for="login-email">Email address</label>
-        <input type="email" class="form-control" id="register-email" aria-describedby="emailHelp" placeholder="Enter email" required>
+        <input type="email" class="form-control" id="register-email" aria-describedby="emailHelp" placeholder="Enter Email" required>
       </div>
       <div class="form-group">
         <label for="login-password">Password</label>
         <input type="password" class="form-control" id="pword" placeholder="Password" required>
       </div>
-      <button type="submit" class="btn btn-outline-primary" id="sumbit-login">Register!</button>
+      <button type="submit" class="btn btn-info" id="sumbit-login">Register</button>
     </form>`
 }
 
