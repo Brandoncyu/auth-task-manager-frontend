@@ -12,8 +12,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "buildSign": "browserify scripts/signin/main.js -o bundle.js",
-    "watchSign": "watchify scripts/signin/main.js -o bundle.js",
+    "buildSign": "browserify scripts/main.js -o bundle.js",
+    "watchSign": "watchify scripts/main.js -o bundle.js",
     "dev-server": "live-server .",
     "dev": "run-all \"npm run watchSign\" \"npm run dev-server\""
   },
