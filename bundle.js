@@ -13,7 +13,7 @@ function loginForm() {
 
 module.exports = loginForm
 
-},{"../templates/login":5,"./01-passwordverification":2}],2:[function(require,module,exports){
+},{"../templates/login":6,"./01-passwordverification":2}],2:[function(require,module,exports){
 const baseURL = `http://localhost:5000`
 
 function verify(event) {
@@ -26,6 +26,8 @@ function verify(event) {
     password: passwordField
   }).then(response => {
     const token = localStorage.setItem('token', response.data.token)
+    document.getElementById('login-email').value = ''
+    document.getElementById('login-password').value = ''
 
     return axios.get(`${baseURL}/api/lists`, {
       headers: {
@@ -62,38 +64,53 @@ listButton.addEventListener('click', function() {
   })
 })
 
-},{"./login/00-loginform":1,"./registration/00-registrationform":4,"./templates/newList":6}],4:[function(require,module,exports){
+},{"./login/00-loginform":1,"./registration/00-registrationform":4,"./templates/newList":7}],4:[function(require,module,exports){
 const registerTemplate = require('../templates/register')
-const baseURL = `http://localhost:5000`
+const verify = require('./01-passwordverification')
 
 function registrationForm() {
   const container = document.getElementById('form-container')
   container.innerHTML = registerTemplate()
 
   let registerForm = document.getElementById('register')
-  registerForm.addEventListener('submit', function(event) {
-    event.preventDefault()
-    let loginField = document.getElementById('register-email').value
-    let passwordField = document.getElementById('register-password').value
-    console.log(loginField, passwordField)
-    axios.post(`${baseURL}/api/users/signup`, {
-      email: loginField,
-      password: passwordField
-    }).then(response => {
-      const token = localStorage.setItem('token', response.data.token)
-
-      return axios.get(`${baseURL}/api/lists`, {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem('token')}`
-        }
-      })
-    }).catch(console.log)
-  })
+  registerForm.addEventListener('submit', verify)
 }
 
 module.exports = registrationForm
 
-},{"../templates/register":7}],5:[function(require,module,exports){
+},{"../templates/register":8,"./01-passwordverification":5}],5:[function(require,module,exports){
+const baseURL = `http://localhost:5000`
+
+function verify(event) {
+  event.preventDefault()
+  let loginField = document.getElementById('register-email').value
+  let passwordField = document.getElementById('register-password').value
+  let firstName = document.getElementById('first-name').value
+  let lastName = document.getElementById('last-name').value
+  console.log(loginField, passwordField)
+  axios.post(`${baseURL}/api/users/signup`, {
+    first_name: firstName,
+    last_name: lastName,
+    email: loginField,
+    password: passwordField
+  }).then(response => {
+    const token = localStorage.setItem('token', response.data.token)
+    document.getElementById('register-email').value = ''
+    document.getElementById('register-password').value = ''
+    document.getElementById('first-name').value = ''
+    document.getElementById('last-name').value = ''
+
+    return axios.get(`${baseURL}/api/lists`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+  }).catch(console.log)
+}
+
+module.exports = verify
+
+},{}],6:[function(require,module,exports){
 const loginTemplate = () => {
   return `
     <h3>Login</h3>
@@ -113,7 +130,7 @@ const loginTemplate = () => {
 
 module.exports = loginTemplate
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 const newListTemplate = () => {
   return `
   <h3>New List</h3>
@@ -129,7 +146,7 @@ const newListTemplate = () => {
 
 module.exports = newListTemplate
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 const registerTemplate = () => {
   return `
     <h3>Register</h3>
