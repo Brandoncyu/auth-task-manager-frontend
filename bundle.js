@@ -14,8 +14,6 @@ function loginForm() {
 module.exports = loginForm
 
 },{"../templates/login":6,"./01-passwordverification":2}],2:[function(require,module,exports){
-const baseURL = `http://localhost:5000`
-
 function verify(event) {
   event.preventDefault()
   let loginField = document.getElementById('login-email').value
@@ -46,6 +44,7 @@ const login = document.getElementById('login-button')
 const register = document.getElementById('register-button')
 const listButton = document.getElementById('list-button')
 const newListTemplate = require('./templates/newList')
+window.baseURL = `https://whispering-shore-93216.herokuapp.com`
 
 login.addEventListener('click', loginForm)
 
@@ -79,8 +78,6 @@ function registrationForm() {
 module.exports = registrationForm
 
 },{"../templates/register":8,"./01-passwordverification":5}],5:[function(require,module,exports){
-const baseURL = `http://localhost:5000`
-
 function verify(event) {
   event.preventDefault()
   let loginField = document.getElementById('register-email').value
