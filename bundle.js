@@ -1,8 +1,10 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 const loginTemplate = require('../templates/login')
 const registerTemplate = require('../templates/register')
+const newListTemplate = require('../templates/newList')
 const login = document.getElementById('login-button')
 const register = document.getElementById('register-button')
+const listButton = document.getElementById('list-button')
 
 login.addEventListener('click', function() {
   const container = document.getElementById('form-container')
@@ -23,41 +25,70 @@ register.addEventListener('click', function() {
 
 })
 
-},{"../templates/login":2,"../templates/register":3}],2:[function(require,module,exports){
+listButton.addEventListener('click', function() {
+  const container = document.getElementById('form-container')
+  container.innerHTML = newListTemplate()
+
+  let listForm = document.getElementById('list-form')
+  listForm.addEventListener('submit', function(event) {
+    event.preventDefault()
+    let listTitleField = document.getElementById('list-title').value
+    console.log(listTitleField)
+
+  })
+})
+
+},{"../templates/login":2,"../templates/newList":3,"../templates/register":4}],2:[function(require,module,exports){
 const loginTemplate = () => {
   return `
     <h3>Login</h3>
-    <br>
+    <hr>
     <form id="login">
       <div class="form-group">
         <label for="login-email">Email address</label>
-        <input type="email" class="form-control" id="login-email" aria-describedby="emailHelp" placeholder="Enter email" required>
+        <input type="email" class="form-control" id="login-email" aria-describedby="emailHelp" placeholder="Enter Email" required>
       </div>
       <div class="form-group">
         <label for="login-password">Password</label>
         <input type="password" class="form-control" id="pword" placeholder="Password" required>
       </div>
-      <button type="submit" class="btn btn-outline-primary" id="sumbit-login">Login!</button>
+      <button type="submit" class="btn btn-primary" id="sumbit-login">Login</button>
     </form>`
 }
 
 module.exports = loginTemplate
 
 },{}],3:[function(require,module,exports){
+const newListTemplate = () => {
+  return `
+  <h3>New List</h3>
+  <hr>
+  <form id="list-form">
+    <div class="form-group">
+      <label for="list-title">Title</label>
+      <input type="text" class="form-control" id="list-title" placeholder="Enter List Title" required>
+    </div>
+    <button type="submit" class="btn btn-success" id="sumbit-list">Create New List</button>
+  </form>`
+}
+
+module.exports = newListTemplate
+
+},{}],4:[function(require,module,exports){
 const registerTemplate = () => {
   return `
     <h3>Register</h3>
-    <br>
+    <hr>
     <form id="register">
       <div class="form-group">
         <label for="login-email">Email address</label>
-        <input type="email" class="form-control" id="register-email" aria-describedby="emailHelp" placeholder="Enter email" required>
+        <input type="email" class="form-control" id="register-email" aria-describedby="emailHelp" placeholder="Enter Email" required>
       </div>
       <div class="form-group">
         <label for="login-password">Password</label>
         <input type="password" class="form-control" id="pword" placeholder="Password" required>
       </div>
-      <button type="submit" class="btn btn-outline-primary" id="sumbit-login">Register!</button>
+      <button type="submit" class="btn btn-info" id="sumbit-login">Register</button>
     </form>`
 }
 
