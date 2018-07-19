@@ -19,7 +19,7 @@ const baseURL = `http://localhost:5000`
 function verify(event) {
   event.preventDefault()
   let loginField = document.getElementById('login-email').value
-  let passwordField = document.getElementById('pword').value
+  let passwordField = document.getElementById('login-password').value
   console.log({email: loginField, password: passwordField})
   axios.post(`${baseURL}/api/users/login`, {
     email: loginField,
@@ -64,11 +64,31 @@ listButton.addEventListener('click', function() {
 
 },{"./login/00-loginform":1,"./registration/00-registrationform":4,"./templates/newList":6}],4:[function(require,module,exports){
 const registerTemplate = require('../templates/register')
+const baseURL = `http://localhost:5000`
 
 function registrationForm() {
   const container = document.getElementById('form-container')
   container.innerHTML = registerTemplate()
 
+  let registerForm = document.getElementById('register')
+  registerForm.addEventListener('submit', function(event) {
+    event.preventDefault()
+    let loginField = document.getElementById('register-email').value
+    let passwordField = document.getElementById('register-password').value
+    console.log(loginField, passwordField)
+    axios.post(`${baseURL}/api/users/signup`, {
+      email: loginField,
+      password: passwordField
+    }).then(response => {
+      const token = localStorage.setItem('token', response.data.token)
+
+      return axios.get(`${baseURL}/api/lists`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
+    }).catch(console.log)
+  })
 }
 
 module.exports = registrationForm
@@ -85,7 +105,7 @@ const loginTemplate = () => {
       </div>
       <div class="form-group">
         <label for="login-password">Password</label>
-        <input type="password" class="form-control" id="pword" placeholder="Password" value="password" required>
+        <input type="password" class="form-control" id="login-password" placeholder="Password" value="password" required>
       </div>
       <button type="submit" class="btn btn-primary" id="sumbit-login">Login</button>
     </form>`
@@ -116,12 +136,20 @@ const registerTemplate = () => {
     <hr>
     <form id="register">
       <div class="form-group">
-        <label for="login-email">Email address</label>
+        <label for="first-name">First Name</label>
+        <input type="first-name" class="form-control" id="first-name" placeholder="First Name" required>
+      </div>
+      <div class="form-group">
+        <label for="last-name">Last Name</label>
+        <input type="last-name" class="form-control" id="last-name" placeholder="Last Name" required>
+      </div>
+      <div class="form-group">
+        <label for="register-email">Email address</label>
         <input type="email" class="form-control" id="register-email" aria-describedby="emailHelp" placeholder="Enter Email" required>
       </div>
       <div class="form-group">
-        <label for="login-password">Password</label>
-        <input type="password" class="form-control" id="pword" placeholder="Password" required>
+        <label for="register-password">Password</label>
+        <input type="password" class="form-control" id="register-password" placeholder="Password" required>
       </div>
       <button type="submit" class="btn btn-info" id="sumbit-login">Register</button>
     </form>`

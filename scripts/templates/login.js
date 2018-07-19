@@ -9,7 +9,7 @@ const loginTemplate = () => {
       </div>
       <div class="form-group">
         <label for="login-password">Password</label>
-        <input type="password" class="form-control" id="pword" placeholder="Password" value="password" required>
+        <input type="password" class="form-control" id="login-password" placeholder="Password" value="password" required>
       </div>
       <button type="submit" class="btn btn-primary" id="sumbit-login">Login</button>
     </form>`
