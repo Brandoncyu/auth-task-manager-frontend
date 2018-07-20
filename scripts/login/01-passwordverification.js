@@ -1,3 +1,5 @@
+const renderLoginError = require('./02-loginError')
+
 function verify(event) {
   event.preventDefault()
   let loginField = document.getElementById('login-email').value
@@ -16,7 +18,9 @@ function verify(event) {
         authorization: `Bearer ${localStorage.getItem('token')}`
       }
     })
-  }).catch(console.log)
+  }).catch(error => {
+    renderLoginError(error)
+  })
 }
 
 module.exports = verify
