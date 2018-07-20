@@ -1,4 +1,7 @@
 const renderLoginError = require('./02-loginError')
+const allListsTemplate = require('../templates/allLists')
+const allListRender = require('../render/allListRender')
+const loginOptions = require('../render/loginOptions')
 
 function verify(event) {
   event.preventDefault()
@@ -10,16 +13,15 @@ function verify(event) {
     password: passwordField
   }).then(response => {
     const token = localStorage.setItem('token', response.data.token)
-    document.getElementById('gate-buttons').setAttribute('style', 'display:block')
-    document.getElementById('key-buttons').setAttribute('style', 'display:none')
-
-    document.getElementById('form-container').innerHTML = ''
-    document.getElementById('list-container').setAttribute('style', 'display:block')
+    loginOptions()
 
     return axios.get(`${baseURL}/api/lists`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`
       }
+    }).then(response => {
+      let lists = response.data.lists
+      allListRender(lists)
     })
   }).catch(error => {
     renderLoginError(error)
