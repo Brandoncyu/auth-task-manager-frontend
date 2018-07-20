@@ -56,7 +56,7 @@
             </div>
 
             <!-- LIST & TASKS CONTAINER -->
-            <div class="container-fluid">
+            <div class="container-fluid" style="display:none" id="list-container">
               <div class="row justify-content-center">
 
                 <!-- LISTS & TASKS COLUMN -->
@@ -64,8 +64,7 @@
                   <h3 class="text-center">All Lists</h3>
 
                   <!-- ALL LISTS -->
-                  <div class="card-group" id="all-group"></div>
-                  <div class="list-group">
+                  <div class="list-group" id="all-group">
 
                     <a class="list-group-item list-group-item-action active d-flex justify-content-between align-items-center" data-id="${task-id}" data-toggle="list" href="#${task-id}" role="tab">${list-title}
                       <span id="remove-list-button" class="badge badge-danger badge-pill">remove</span>
@@ -76,7 +75,7 @@
                   </div>
 
                   <!-- TASKS FORM -->
-                  <div class="mt-2 p-4 border rounded">
+                  <div class="mt-2 p-4 border rounded" id='task-form'>
                     <form>
                       <h4>Create a New Task</h4>
                       <hr>
@@ -98,18 +97,19 @@
                 <!-- DOING COLUMN -->
                 <div class="col" id="doing">
                   <h3 class="text-center">Doing</h3>
-                  <div class="card-group" id="doing-group"></div>
+                  <div class="card-group" id="doing-group">
 
-                  <!-- DOING CARDS -->
-                  <div class="card mt-2">
-                    <div class="card-body">
-                      <h5 class="card-title">Doing Title</h5>
-                      <hr>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <button type="submit" class="btn btn-success">Completed</button>
-                    </div>
-                    <div class="card-footer text-muted">
-                      2 days ago
+                    <!-- DOING CARDS -->
+                    <div class="card mt-2">
+                      <div class="card-body">
+                        <h5 class="card-title">Doing Title</h5>
+                        <hr>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <button type="submit" class="btn btn-success">Completed</button>
+                      </div>
+                      <div class="card-footer text-muted">
+                        2 days ago
+                      </div>
                     </div>
                   </div>
 
@@ -118,21 +118,20 @@
                 <!-- DOING COLUMN -->
                 <div class="col" id="done">
                   <h3 class="text-center">Done</h3>
-                  <div class="card-group" id="done-group"></div>
-
-                  <!-- DONE CARDS -->
-                  <div class="card mt-2">
-                    <div class="card-body">
-                      <h5 class="card-title">Done Title</h5>
-                      <hr>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <button type="submit" class="btn btn-danger">Remove</button>
-                    </div>
-                    <div class="card-footer text-muted">
-                      2 days ago
+                  <div class="card-group" id="done-group">
+                    <!-- DONE CARDS -->
+                    <div class="card mt-2">
+                      <div class="card-body">
+                        <h5 class="card-title">Done Title</h5>
+                        <hr>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <button type="submit" class="btn btn-danger">Remove</button>
+                      </div>
+                      <div class="card-footer text-muted">
+                        2 days ago
+                      </div>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
