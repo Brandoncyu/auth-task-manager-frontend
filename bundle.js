@@ -1,4 +1,11 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+function cancelList(){
+  document.getElementById('form-container').innerHTML = ''
+}
+
+module.exports = cancelList
+
+},{}],2:[function(require,module,exports){
 const loginTemplate = require('../templates/login')
 
 const verify = require('./01-passwordverification')
@@ -13,7 +20,7 @@ function loginForm() {
 
 module.exports = loginForm
 
-},{"../templates/login":8,"./01-passwordverification":2}],2:[function(require,module,exports){
+},{"../templates/login":9,"./01-passwordverification":3}],3:[function(require,module,exports){
 const renderLoginError = require('./02-loginError')
 
 function verify(event) {
@@ -44,7 +51,7 @@ function verify(event) {
 
 module.exports = verify
 
-},{"./02-loginError":3}],3:[function(require,module,exports){
+},{"./02-loginError":4}],4:[function(require,module,exports){
 const loginAlertTemplate = require('../templates/loginAlert')
 
 function renderLoginError(error) {
@@ -63,9 +70,10 @@ function renderLoginError(error) {
 
 module.exports = renderLoginError
 
-},{"../templates/loginAlert":9}],4:[function(require,module,exports){
+},{"../templates/loginAlert":10}],5:[function(require,module,exports){
 const loginForm = require('./login/00-loginform')
 const registrationForm = require('./registration/00-registrationform')
+const cancelList = require('./buttons/cancelList')
 const login = document.getElementById('login-button')
 const register = document.getElementById('register-button')
 const listButton = document.getElementById('list-button')
@@ -88,8 +96,10 @@ listButton.addEventListener('click', function() {
     console.log(listTitleField)
 
   })
-})
 
+  let cancelListButton = document.getElementById('cancel-list')
+  cancelListButton.addEventListener('click', cancelList)
+})
 
 logoutButton.addEventListener('click', function() {
   localStorage.removeItem('token')
@@ -97,13 +107,12 @@ logoutButton.addEventListener('click', function() {
   document.getElementById('key-buttons').setAttribute('style', 'display:block')
   document.getElementById('list-container').setAttribute('style', 'display:none')
   document.getElementById('form-container').innerHTML = ''
-  document.getElementById('all-group').innerHTML = ''
-  document.getElementById('done-group').innerHTML = ''
-  document.getElementById('doing-group').innerHTML = ''
+  // document.getElementById('all-group').innerHTML = ''
+  // document.getElementById('done-group').innerHTML = ''
+  // document.getElementById('doing-group').innerHTML = ''
 })
 
-},{"./login/00-loginform":1,"./registration/00-registrationform":4,"./templates/newList":7}],4:[function(require,module,exports){
-
+},{"./buttons/cancelList":1,"./login/00-loginform":2,"./registration/00-registrationform":6,"./templates/newList":11}],6:[function(require,module,exports){
 const registerTemplate = require('../templates/register')
 const verify = require('./01-passwordverification')
 
@@ -117,7 +126,7 @@ function registrationForm() {
 
 module.exports = registrationForm
 
-},{"../templates/register":11,"./01-passwordverification":6}],6:[function(require,module,exports){
+},{"../templates/register":12,"./01-passwordverification":7}],7:[function(require,module,exports){
 const renderRegisterError = require('./02-registerError')
 
 function verify(event) {
@@ -154,7 +163,7 @@ function verify(event) {
 
 module.exports = verify
 
-},{"./02-registerError":7}],7:[function(require,module,exports){
+},{"./02-registerError":8}],8:[function(require,module,exports){
 const registerAlertTemplate = require('../templates/registerAlert')
 
 function renderRegisterError(error) {
@@ -175,7 +184,7 @@ function renderRegisterError(error) {
 
 module.exports = renderRegisterError
 
-},{"../templates/registerAlert":12}],8:[function(require,module,exports){
+},{"../templates/registerAlert":13}],9:[function(require,module,exports){
 const loginTemplate = () => {
   return `
     <div class="col-6 p-4 border rounded">
@@ -198,7 +207,7 @@ const loginTemplate = () => {
 
 module.exports = loginTemplate
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 const loginAlertTemplate = () => {
   return `
   <br>
@@ -209,7 +218,7 @@ const loginAlertTemplate = () => {
 
 module.exports = loginAlertTemplate
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 const newListTemplate = () => {
   return `
   <div class="col-6 p-4 border rounded">
@@ -221,13 +230,14 @@ const newListTemplate = () => {
         <input type="text" class="form-control" id="list-title" placeholder="Enter List Title" required>
       </div>
       <button type="submit" class="btn btn-success" id="sumbit-list">Create New List</button>
+      <button type="button" class="btn btn-danger" id="cancel-list">Cancel</button>
     </form>
   </div>`
 }
 
 module.exports = newListTemplate
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 const registerTemplate = () => {
   return `
   <div class="col-6 p-4 border rounded">
@@ -258,7 +268,7 @@ const registerTemplate = () => {
 
 module.exports = registerTemplate
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 const registerAlertTemplate = () => {
   return `<br>
   <div class="alert alert-danger" role="alert">
@@ -268,4 +278,4 @@ const registerAlertTemplate = () => {
 
 module.exports = registerAlertTemplate
 
-},{}]},{},[4]);
+},{}]},{},[5]);

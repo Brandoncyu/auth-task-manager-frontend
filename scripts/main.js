@@ -1,5 +1,6 @@
 const loginForm = require('./login/00-loginform')
 const registrationForm = require('./registration/00-registrationform')
+const cancelList = require('./buttons/cancelList')
 const login = document.getElementById('login-button')
 const register = document.getElementById('register-button')
 const listButton = document.getElementById('list-button')
@@ -22,6 +23,9 @@ listButton.addEventListener('click', function() {
     console.log(listTitleField)
 
   })
+
+  let cancelListButton = document.getElementById('cancel-list')
+  cancelListButton.addEventListener('click', cancelList)
 })
 
 logoutButton.addEventListener('click', function() {
@@ -30,7 +34,7 @@ logoutButton.addEventListener('click', function() {
   document.getElementById('key-buttons').setAttribute('style', 'display:block')
   document.getElementById('list-container').setAttribute('style', 'display:none')
   document.getElementById('form-container').innerHTML = ''
-  document.getElementById('all-group').innerHTML = ''
-  document.getElementById('done-group').innerHTML = ''
-  document.getElementById('doing-group').innerHTML = ''
+  // document.getElementById('all-group').innerHTML = ''
+  // document.getElementById('done-group').innerHTML = ''
+  // document.getElementById('doing-group').innerHTML = ''
 })
