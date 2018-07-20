@@ -13,7 +13,9 @@ function loginForm() {
 
 module.exports = loginForm
 
-},{"../templates/login":6,"./01-passwordverification":2}],2:[function(require,module,exports){
+},{"../templates/login":8,"./01-passwordverification":2}],2:[function(require,module,exports){
+const renderLoginError = require('./02-loginError')
+
 function verify(event) {
   event.preventDefault()
   let loginField = document.getElementById('login-email').value
@@ -35,12 +37,33 @@ function verify(event) {
         authorization: `Bearer ${localStorage.getItem('token')}`
       }
     })
-  }).catch(console.log)
+  }).catch(error => {
+    renderLoginError(error)
+  })
 }
 
 module.exports = verify
 
-},{}],3:[function(require,module,exports){
+},{"./02-loginError":3}],3:[function(require,module,exports){
+const loginAlertTemplate = require('../templates/loginAlert')
+
+function renderLoginError(error) {
+    document.getElementById('login-email').value = ''
+    document.getElementById('login-password').value = ''
+
+    const loginAlert = document.getElementById('login-alert')
+
+    loginAlert.innerHTML = loginAlertTemplate()
+
+    setTimeout(function() {
+      loginAlert.innerHTML = ''
+    }, 4000)
+
+}
+
+module.exports = renderLoginError
+
+},{"../templates/loginAlert":9}],4:[function(require,module,exports){
 const loginForm = require('./login/00-loginform')
 const registrationForm = require('./registration/00-registrationform')
 const login = document.getElementById('login-button')
@@ -67,6 +90,7 @@ listButton.addEventListener('click', function() {
   })
 })
 
+
 logoutButton.addEventListener('click', function() {
   localStorage.removeItem('token')
   document.getElementById('gate-buttons').setAttribute('style', 'display:none')
@@ -79,6 +103,7 @@ logoutButton.addEventListener('click', function() {
 })
 
 },{"./login/00-loginform":1,"./registration/00-registrationform":4,"./templates/newList":7}],4:[function(require,module,exports){
+
 const registerTemplate = require('../templates/register')
 const verify = require('./01-passwordverification')
 
@@ -92,7 +117,9 @@ function registrationForm() {
 
 module.exports = registrationForm
 
-},{"../templates/register":8,"./01-passwordverification":5}],5:[function(require,module,exports){
+},{"../templates/register":11,"./01-passwordverification":6}],6:[function(require,module,exports){
+const renderRegisterError = require('./02-registerError')
+
 function verify(event) {
   event.preventDefault()
 
@@ -120,12 +147,35 @@ function verify(event) {
         authorization: `Bearer ${localStorage.getItem('token')}`
       }
     })
-  }).catch(console.log)
+  }).catch(error => {
+    renderRegisterError(error)
+  })
 }
 
 module.exports = verify
 
-},{}],6:[function(require,module,exports){
+},{"./02-registerError":7}],7:[function(require,module,exports){
+const registerAlertTemplate = require('../templates/registerAlert')
+
+function renderRegisterError(error) {
+    document.getElementById('first-name').value = ''
+    document.getElementById('last-name').value = ''
+    document.getElementById('register-email').value = ''
+    document.getElementById('register-password').value = ''
+
+    const registerAlert = document.getElementById('register-alert')
+
+    registerAlert.innerHTML = registerAlertTemplate()
+
+    setTimeout(function() {
+      registerAlert.innerHTML = ''
+    }, 4000)
+
+}
+
+module.exports = renderRegisterError
+
+},{"../templates/registerAlert":12}],8:[function(require,module,exports){
 const loginTemplate = () => {
   return `
     <div class="col-6 p-4 border rounded">
@@ -142,12 +192,24 @@ const loginTemplate = () => {
         </div>
         <button type="submit" class="btn btn-primary" id="sumbit-login">Login</button>
       </form>
+      <span id="login-alert"></span>
     </div>`
 }
 
 module.exports = loginTemplate
 
-},{}],7:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
+const loginAlertTemplate = () => {
+  return `
+  <br>
+  <div class="alert alert-danger" role="alert">
+  Email or password is incorrect. Please try again
+  </div>`
+}
+
+module.exports = loginAlertTemplate
+
+},{}],10:[function(require,module,exports){
 const newListTemplate = () => {
   return `
   <div class="col-6 p-4 border rounded">
@@ -165,7 +227,7 @@ const newListTemplate = () => {
 
 module.exports = newListTemplate
 
-},{}],8:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 const registerTemplate = () => {
   return `
   <div class="col-6 p-4 border rounded">
@@ -190,9 +252,20 @@ const registerTemplate = () => {
         </div>
         <button type="submit" class="btn btn-info" id="sumbit-login">Register</button>
       </form>
+      <span id="register-alert"></span>
     </div>`
 }
 
 module.exports = registerTemplate
 
-},{}]},{},[3]);
+},{}],12:[function(require,module,exports){
+const registerAlertTemplate = () => {
+  return `<br>
+  <div class="alert alert-danger" role="alert">
+  Email is taken. Please register with a different email.
+  </div>`
+}
+
+module.exports = registerAlertTemplate
+
+},{}]},{},[4]);

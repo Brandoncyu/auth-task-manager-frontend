@@ -14,6 +14,7 @@ const loginTemplate = () => {
         </div>
         <button type="submit" class="btn btn-primary" id="sumbit-login">Login</button>
       </form>
+      <span id="login-alert"></span>
     </div>`
 }
 

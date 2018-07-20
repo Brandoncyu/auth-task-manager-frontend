@@ -22,6 +22,7 @@ const registerTemplate = () => {
         </div>
         <button type="submit" class="btn btn-info" id="sumbit-login">Register</button>
       </form>
+      <span id="register-alert"></span>
     </div>`
 }
 

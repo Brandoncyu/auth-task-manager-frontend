@@ -1,3 +1,5 @@
+const renderRegisterError = require('./02-registerError')
+
 function verify(event) {
   event.preventDefault()
 
@@ -25,7 +27,9 @@ function verify(event) {
         authorization: `Bearer ${localStorage.getItem('token')}`
       }
     })
-  }).catch(console.log)
+  }).catch(error => {
+    renderRegisterError(error)
+  })
 }
 
 module.exports = verify
