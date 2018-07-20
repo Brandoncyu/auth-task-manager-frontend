@@ -10,8 +10,11 @@ function verify(event) {
     password: passwordField
   }).then(response => {
     const token = localStorage.setItem('token', response.data.token)
-    document.getElementById('login-email').value = ''
-    document.getElementById('login-password').value = ''
+    document.getElementById('gate-buttons').setAttribute('style', 'display:block')
+    document.getElementById('key-buttons').setAttribute('style', 'display:none')
+
+    document.getElementById('form-container').innerHTML = ''
+    document.getElementById('list-container').setAttribute('style', 'display:block')
 
     return axios.get(`${baseURL}/api/lists`, {
       headers: {

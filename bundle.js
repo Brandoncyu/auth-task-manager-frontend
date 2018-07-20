@@ -26,8 +26,11 @@ function verify(event) {
     password: passwordField
   }).then(response => {
     const token = localStorage.setItem('token', response.data.token)
-    document.getElementById('login-email').value = ''
-    document.getElementById('login-password').value = ''
+    document.getElementById('gate-buttons').setAttribute('style', 'display:block')
+    document.getElementById('key-buttons').setAttribute('style', 'display:none')
+
+    document.getElementById('form-container').innerHTML = ''
+    document.getElementById('list-container').setAttribute('style', 'display:block')
 
     return axios.get(`${baseURL}/api/lists`, {
       headers: {
@@ -66,6 +69,7 @@ const registrationForm = require('./registration/00-registrationform')
 const login = document.getElementById('login-button')
 const register = document.getElementById('register-button')
 const listButton = document.getElementById('list-button')
+const logoutButton = document.getElementById('logout-button')
 const newListTemplate = require('./templates/newList')
 window.baseURL = `https://whispering-shore-93216.herokuapp.com`
 
@@ -86,7 +90,20 @@ listButton.addEventListener('click', function() {
   })
 })
 
-},{"./login/00-loginform":1,"./registration/00-registrationform":5,"./templates/newList":10}],5:[function(require,module,exports){
+
+logoutButton.addEventListener('click', function() {
+  localStorage.removeItem('token')
+  document.getElementById('gate-buttons').setAttribute('style', 'display:none')
+  document.getElementById('key-buttons').setAttribute('style', 'display:block')
+  document.getElementById('list-container').setAttribute('style', 'display:none')
+  document.getElementById('form-container').innerHTML = ''
+  document.getElementById('all-group').innerHTML = ''
+  document.getElementById('done-group').innerHTML = ''
+  document.getElementById('doing-group').innerHTML = ''
+})
+
+},{"./login/00-loginform":1,"./registration/00-registrationform":4,"./templates/newList":7}],4:[function(require,module,exports){
+
 const registerTemplate = require('../templates/register')
 const verify = require('./01-passwordverification')
 
@@ -105,10 +122,12 @@ const renderRegisterError = require('./02-registerError')
 
 function verify(event) {
   event.preventDefault()
+
   let loginField = document.getElementById('register-email').value
   let passwordField = document.getElementById('register-password').value
   let firstName = document.getElementById('first-name').value
   let lastName = document.getElementById('last-name').value
+
   console.log(loginField, passwordField)
   axios.post(`${baseURL}/api/users/signup`, {
     first_name: firstName,
@@ -117,10 +136,11 @@ function verify(event) {
     password: passwordField
   }).then(response => {
     const token = localStorage.setItem('token', response.data.token)
-    document.getElementById('register-email').value = ''
-    document.getElementById('register-password').value = ''
-    document.getElementById('first-name').value = ''
-    document.getElementById('last-name').value = ''
+    document.getElementById('gate-buttons').setAttribute('style', 'display:block')
+    document.getElementById('key-buttons').setAttribute('style', 'display:none')
+
+    document.getElementById('form-container').innerHTML = ''
+    document.getElementById('list-container').setAttribute('style', 'display:block')
 
     return axios.get(`${baseURL}/api/lists`, {
       headers: {
@@ -192,15 +212,17 @@ module.exports = loginAlertTemplate
 },{}],10:[function(require,module,exports){
 const newListTemplate = () => {
   return `
-  <h3>New List</h3>
-  <hr>
-  <form id="list-form">
-    <div class="form-group">
-      <label for="list-title">Title</label>
-      <input type="text" class="form-control" id="list-title" placeholder="Enter List Title" required>
-    </div>
-    <button type="submit" class="btn btn-success" id="sumbit-list">Create New List</button>
-  </form>`
+  <div class="col-6 p-4 border rounded">
+    <h3>New List</h3>
+    <hr>
+    <form id="list-form">
+      <div class="form-group">
+        <label for="list-title">Title</label>
+        <input type="text" class="form-control" id="list-title" placeholder="Enter List Title" required>
+      </div>
+      <button type="submit" class="btn btn-success" id="sumbit-list">Create New List</button>
+    </form>
+  </div>`
 }
 
 module.exports = newListTemplate
