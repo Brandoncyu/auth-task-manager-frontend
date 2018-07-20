@@ -9,6 +9,7 @@ const newListTemplate = () => {
         <input type="text" class="form-control" id="list-title" placeholder="Enter List Title" required>
       </div>
       <button type="submit" class="btn btn-success" id="sumbit-list">Create New List</button>
+      <button type="button" class="btn btn-danger" id="cancel-list">Cancel</button>
     </form>
   </div>`
 }
