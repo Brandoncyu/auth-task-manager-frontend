@@ -1,4 +1,5 @@
 const renderRegisterError = require('./02-registerError')
+const loginOptions = require('../render/loginOptions')
 
 function verify(event) {
   event.preventDefault()
@@ -16,11 +17,9 @@ function verify(event) {
     password: passwordField
   }).then(response => {
     const token = localStorage.setItem('token', response.data.token)
-    document.getElementById('gate-buttons').setAttribute('style', 'display:block')
-    document.getElementById('key-buttons').setAttribute('style', 'display:none')
+    loginOptions()
 
-    document.getElementById('form-container').innerHTML = ''
-    document.getElementById('list-container').setAttribute('style', 'display:block')
+    document.getElementById('all-group').innerHTML = `<p>No Lists Found. Make Your First List By Clicking The 'New List' Button on the Top Right!</p>`
 
     return axios.get(`${baseURL}/api/lists`, {
       headers: {

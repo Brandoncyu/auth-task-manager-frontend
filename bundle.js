@@ -13,8 +13,11 @@ function loginForm() {
 
 module.exports = loginForm
 
-},{"../templates/login":8,"./01-passwordverification":2}],2:[function(require,module,exports){
+},{"../templates/login":11,"./01-passwordverification":2}],2:[function(require,module,exports){
 const renderLoginError = require('./02-loginError')
+const allListsTemplate = require('../templates/allLists')
+const allListRender = require('../render/allListRender')
+const loginOptions = require('../render/loginOptions')
 
 function verify(event) {
   event.preventDefault()
@@ -26,16 +29,15 @@ function verify(event) {
     password: passwordField
   }).then(response => {
     const token = localStorage.setItem('token', response.data.token)
-    document.getElementById('gate-buttons').setAttribute('style', 'display:block')
-    document.getElementById('key-buttons').setAttribute('style', 'display:none')
-
-    document.getElementById('form-container').innerHTML = ''
-    document.getElementById('list-container').setAttribute('style', 'display:block')
+    loginOptions()
 
     return axios.get(`${baseURL}/api/lists`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`
       }
+    }).then(response => {
+      let lists = response.data.lists
+      allListRender(lists)
     })
   }).catch(error => {
     renderLoginError(error)
@@ -44,7 +46,7 @@ function verify(event) {
 
 module.exports = verify
 
-},{"./02-loginError":3}],3:[function(require,module,exports){
+},{"../render/allListRender":8,"../render/loginOptions":9,"../templates/allLists":10,"./02-loginError":3}],3:[function(require,module,exports){
 const loginAlertTemplate = require('../templates/loginAlert')
 
 function renderLoginError(error) {
@@ -63,7 +65,7 @@ function renderLoginError(error) {
 
 module.exports = renderLoginError
 
-},{"../templates/loginAlert":9}],4:[function(require,module,exports){
+},{"../templates/loginAlert":12}],4:[function(require,module,exports){
 const loginForm = require('./login/00-loginform')
 const registrationForm = require('./registration/00-registrationform')
 const login = document.getElementById('login-button')
@@ -90,7 +92,6 @@ listButton.addEventListener('click', function() {
   })
 })
 
-
 logoutButton.addEventListener('click', function() {
   localStorage.removeItem('token')
   document.getElementById('gate-buttons').setAttribute('style', 'display:none')
@@ -98,12 +99,12 @@ logoutButton.addEventListener('click', function() {
   document.getElementById('list-container').setAttribute('style', 'display:none')
   document.getElementById('form-container').innerHTML = ''
   document.getElementById('all-group').innerHTML = ''
+  document.getElementById('task-form').innerHTML = ''
   document.getElementById('done-group').innerHTML = ''
   document.getElementById('doing-group').innerHTML = ''
 })
 
-},{"./login/00-loginform":1,"./registration/00-registrationform":4,"./templates/newList":7}],4:[function(require,module,exports){
-
+},{"./login/00-loginform":1,"./registration/00-registrationform":5,"./templates/newList":13}],5:[function(require,module,exports){
 const registerTemplate = require('../templates/register')
 const verify = require('./01-passwordverification')
 
@@ -117,8 +118,9 @@ function registrationForm() {
 
 module.exports = registrationForm
 
-},{"../templates/register":11,"./01-passwordverification":6}],6:[function(require,module,exports){
+},{"../templates/register":14,"./01-passwordverification":6}],6:[function(require,module,exports){
 const renderRegisterError = require('./02-registerError')
+const loginOptions = require('../render/loginOptions')
 
 function verify(event) {
   event.preventDefault()
@@ -136,11 +138,9 @@ function verify(event) {
     password: passwordField
   }).then(response => {
     const token = localStorage.setItem('token', response.data.token)
-    document.getElementById('gate-buttons').setAttribute('style', 'display:block')
-    document.getElementById('key-buttons').setAttribute('style', 'display:none')
+    loginOptions()
 
-    document.getElementById('form-container').innerHTML = ''
-    document.getElementById('list-container').setAttribute('style', 'display:block')
+    document.getElementById('all-group').innerHTML = `<p>No Lists Found. Make Your First List By Clicking The 'New List' Button on the Top Right!</p>`
 
     return axios.get(`${baseURL}/api/lists`, {
       headers: {
@@ -154,7 +154,7 @@ function verify(event) {
 
 module.exports = verify
 
-},{"./02-registerError":7}],7:[function(require,module,exports){
+},{"../render/loginOptions":9,"./02-registerError":7}],7:[function(require,module,exports){
 const registerAlertTemplate = require('../templates/registerAlert')
 
 function renderRegisterError(error) {
@@ -175,7 +175,39 @@ function renderRegisterError(error) {
 
 module.exports = renderRegisterError
 
-},{"../templates/registerAlert":12}],8:[function(require,module,exports){
+},{"../templates/registerAlert":15}],8:[function(require,module,exports){
+const allListsTemplate = require('../templates/allLists')
+
+function allListRender(lists) {
+  let accumulator = ''
+  lists.forEach(element => accumulator += allListsTemplate(element.id, element.title))
+  document.getElementById('all-group').innerHTML = accumulator
+}
+
+module.exports = allListRender
+
+},{"../templates/allLists":10}],9:[function(require,module,exports){
+function loginOptions() {
+  document.getElementById('gate-buttons').setAttribute('style', 'display:block')
+  document.getElementById('key-buttons').setAttribute('style', 'display:none')
+
+  document.getElementById('form-container').innerHTML = ''
+  document.getElementById('list-container').setAttribute('style', 'display:block')
+}
+
+module.exports = loginOptions
+
+},{}],10:[function(require,module,exports){
+const allListsTemplate = (id, title) => {
+  return `
+  <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-id="${id}" data-toggle="list" href="#${id}" role="tab">${title}
+    <span id="remove-list-button" class="badge badge-danger badge-pill">remove</span>
+  </a>`
+}
+
+module.exports = allListsTemplate
+
+},{}],11:[function(require,module,exports){
 const loginTemplate = () => {
   return `
     <div class="col-6 p-4 border rounded">
@@ -198,7 +230,7 @@ const loginTemplate = () => {
 
 module.exports = loginTemplate
 
-},{}],9:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 const loginAlertTemplate = () => {
   return `
   <br>
@@ -209,7 +241,7 @@ const loginAlertTemplate = () => {
 
 module.exports = loginAlertTemplate
 
-},{}],10:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 const newListTemplate = () => {
   return `
   <div class="col-6 p-4 border rounded">
@@ -227,7 +259,7 @@ const newListTemplate = () => {
 
 module.exports = newListTemplate
 
-},{}],11:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 const registerTemplate = () => {
   return `
   <div class="col-6 p-4 border rounded">
@@ -258,7 +290,7 @@ const registerTemplate = () => {
 
 module.exports = registerTemplate
 
-},{}],12:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 const registerAlertTemplate = () => {
   return `<br>
   <div class="alert alert-danger" role="alert">
