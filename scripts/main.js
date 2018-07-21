@@ -1,12 +1,14 @@
-const loginForm = require('./login/00-loginform')
-const registrationForm = require('./registration/00-registrationform')
-const cancelList = require('./buttons/cancelList')
-const login = document.getElementById('login-button')
-const register = document.getElementById('register-button')
-const listButton = document.getElementById('list-button')
-const logoutButton = document.getElementById('logout-button')
-const newListTemplate = require('./templates/newList')
 window.baseURL = `https://whispering-shore-93216.herokuapp.com`
+const login = document.getElementById('login-button')
+const loginForm = require('./login/00-loginform')
+const register = document.getElementById('register-button')
+const registrationForm = require('./registration/00-registrationform')
+const logoutButton = document.getElementById('logout-button')
+const logoutOptions = require('./render/logoutOptions')
+
+const listButton = document.getElementById('list-button')
+const newListTemplate = require('./templates/newList')
+const cancelList = require('./buttons/cancelList')
 
 login.addEventListener('click', loginForm)
 
@@ -28,16 +30,4 @@ listButton.addEventListener('click', function() {
   cancelListButton.addEventListener('click', cancelList)
 })
 
-logoutButton.addEventListener('click', function() {
-  localStorage.removeItem('token')
-  document.getElementById('gate-buttons').setAttribute('style', 'display:none')
-  document.getElementById('key-buttons').setAttribute('style', 'display:block')
-  document.getElementById('list-container').setAttribute('style', 'display:none')
-  document.getElementById('form-container').innerHTML = ''
-
-  document.getElementById('all-group').innerHTML = ''
-  document.getElementById('task-form').innerHTML = ''
-  document.getElementById('done-group').innerHTML = ''
-  document.getElementById('doing-group').innerHTML = ''
-
-})
+logoutButton.addEventListener('click', logoutOptions)
