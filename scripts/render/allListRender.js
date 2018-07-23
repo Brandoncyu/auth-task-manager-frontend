@@ -9,7 +9,6 @@ function allListRender(lists) {
   document.getElementById('all-group').innerHTML = accumulator
 
   let listGroup = document.querySelectorAll('.list-group-item')
-
   listGroup.forEach(element => {
     element.addEventListener('click', function(event) {
       listGroup.forEach(element => {
@@ -19,15 +18,18 @@ function allListRender(lists) {
 
       listGroupRender(lists, element)
 
-
       let link = event.target
       if (link.nodeName !== 'A') link = link.parentNode
 
       link.classList.add('active')
       link.children[0].classList.add('d-none')
-      link.children[0].addEventListener('click', function() {
-        removeListOptions(element)
-      })
+    })
+  })
+
+  let removeListButton = document.querySelectorAll('#remove-list-button')
+  removeListButton.forEach(element => {
+    element.addEventListener('click', function(event) {
+      removeListOptions(element)
     })
   })
 

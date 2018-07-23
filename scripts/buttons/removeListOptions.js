@@ -1,6 +1,6 @@
 function removeListOptions(element) {
   const allList = require('../render/allList')
-  let listId = element.getAttribute('data-id')
+  let listId = element.getAttribute('new-id')
 
   axios.delete(`${baseURL}/api/lists/${listId}`, {
     headers: {
