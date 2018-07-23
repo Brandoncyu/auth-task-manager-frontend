@@ -5,15 +5,17 @@ const cardDone = require('../templates/cardDone')
 function listGroupRender(lists, element) {
   document.getElementById('task-form').innerHTML = createNewListsTemplate()
   let dataId = element.getAttribute('data-id')
-  let taskList = lists.find(task => task.id == dataId).tasks
+  let taskList = lists.find(task => task.id === parseInt(dataId)).tasks
 
   let accumulatorDoing = ''
   let accumulatorDone = ''
+
   taskList.forEach(card => {
     if (card.completed === false) {
+      console.log( card.created_at)
       accumulatorDoing += cardDoing(card.title, card.description, card.id, card.created_at)
     } else {
-      accumulatorDone += cardDone(card.title, card.description, card.id, card.created_at)
+      accumulatorDone += cardDone(card.title, card.description, card.id, card.updated_at)
     }
   })
   document.getElementById('doing-group').innerHTML = accumulatorDoing
