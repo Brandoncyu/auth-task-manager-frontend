@@ -30,4 +30,6 @@ listButton.addEventListener('click', function() {
   cancelListButton.addEventListener('click', cancelList)
 })
 
+
+
 logoutButton.addEventListener('click', logoutOptions)

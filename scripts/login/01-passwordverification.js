@@ -21,6 +21,7 @@ function verify(event) {
       }
     }).then(response => {
       let lists = response.data.lists
+      console.log(lists)
       allListRender(lists)
     })
   }).catch(error => {
