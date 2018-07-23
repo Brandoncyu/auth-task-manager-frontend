@@ -28,7 +28,7 @@ function allListRender(lists) {
 
   let removeListButton = document.querySelectorAll('#remove-list-button')
   removeListButton.forEach(element => {
-    element.addEventListener('click', function(event) {
+    element.addEventListener('click', function() {
       removeListOptions(element)
     })
   })
