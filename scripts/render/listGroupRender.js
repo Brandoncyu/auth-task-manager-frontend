@@ -18,12 +18,12 @@ function listGroupRender(lists, element) {
       let createdTime = moment(card.created_at).toNow(true)
 
       accumulatorDoing += cardDoing(card.title, card.description, card.id, `Created ${createdTime} ago`)
-      
+
     } else {
 
       let updatedTime = moment(card.updated_at).toNow(true)
 
-      accumulatorDone += cardDone(card.title, card.description, card.id, `Created ${updatedTime} ago`)
+      accumulatorDone += cardDone(card.title, card.description, card.id, `Updated ${updatedTime} ago`)
     }
   })
   document.getElementById('doing-group').innerHTML = accumulatorDoing
