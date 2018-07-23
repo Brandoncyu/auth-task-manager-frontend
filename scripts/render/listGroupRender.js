@@ -5,7 +5,7 @@ const cardDone = require('../templates/cardDone')
 function listGroupRender(lists, element) {
   document.getElementById('task-form').innerHTML = createNewListsTemplate()
   let dataId = element.getAttribute('data-id')
-  let taskList = lists.find(task => task.id == dataId).tasks
+  let taskList = lists.find(task => task.id == parseInt(dataId)).tasks
 
   let accumulatorDoing = ''
   let accumulatorDone = ''
