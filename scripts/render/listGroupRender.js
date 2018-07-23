@@ -1,6 +1,7 @@
 const createNewListsTemplate = require('../templates/createNewList')
 const cardDoing = require('../templates/cardDoing')
 const cardDone = require('../templates/cardDone')
+const moment = require('moment')
 
 function listGroupRender(lists, element) {
   document.getElementById('task-form').innerHTML = createNewListsTemplate()
@@ -13,9 +14,16 @@ function listGroupRender(lists, element) {
 
   taskList.forEach(card => {
     if (card.completed === false) {
-      accumulatorDoing += cardDoing(card.title, card.description, card.id, card.created_at)
+
+      let createdTime = moment(card.created_at).toNow(true)
+
+      accumulatorDoing += cardDoing(card.title, card.description, card.id, `Created ${createdTime} ago`)
+
     } else {
-      accumulatorDone += cardDone(card.title, card.description, card.id, card.updated_at)
+
+      let updatedTime = moment(card.updated_at).toNow(true)
+
+      accumulatorDone += cardDone(card.title, card.description, card.id, `Updated ${updatedTime} ago`)
     }
   })
   document.getElementById('doing-group').innerHTML = accumulatorDoing

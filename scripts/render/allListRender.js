@@ -10,19 +10,27 @@ function allListRender(lists) {
 
   let listGroup = document.querySelectorAll('.list-group-item')
 
-  listGroup.forEach(element => element.addEventListener('click', function(event) {
-    listGroup.forEach(element => {
-      element.classList.remove('active')
-      element.children[0].classList.add('d-none')
-    })
+  listGroup.forEach(element => {
+    element.addEventListener('click', function(event) {
+      listGroup.forEach(element => {
+        element.classList.remove('active')
+        element.children[0].classList.remove('d-none')
+      })
 
-    listGroupRender(lists, element)
-    event.target.classList.add('active')
-    event.target.children[0].classList.remove('d-none')
-    event.target.children[0].addEventListener('click', function() {
-      removeListOptions(element)
+      listGroupRender(lists, element)
+
+
+      let link = event.target
+      if (link.nodeName !== 'A') link = link.parentNode
+
+      link.classList.add('active')
+      link.children[0].classList.add('d-none')
+      link.children[0].addEventListener('click', function() {
+        removeListOptions(element)
+      })
     })
-  }))
+  })
+
 }
 
 module.exports = allListRender
