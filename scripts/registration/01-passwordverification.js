@@ -9,7 +9,6 @@ function verify(event) {
   let firstName = document.getElementById('first-name').value
   let lastName = document.getElementById('last-name').value
 
-  console.log(loginField, passwordField)
   axios.post(`${baseURL}/api/users/signup`, {
     first_name: firstName,
     last_name: lastName,

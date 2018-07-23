@@ -6,7 +6,6 @@ function verify(event) {
   event.preventDefault()
   let loginField = document.getElementById('login-email').value
   let passwordField = document.getElementById('login-password').value
-  console.log({email: loginField, password: passwordField})
 
   axios.post(`${baseURL}/api/users/login`, {
     email: loginField,
