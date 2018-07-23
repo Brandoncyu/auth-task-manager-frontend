@@ -1,6 +1,7 @@
 const allListsTemplate = require('../templates/allLists')
 
 const listGroupRender = require('./listGroupRender')
+const removeListOptions = require('../buttons/removeListOptions')
 
 function allListRender(lists) {
   let accumulator = ''
@@ -18,6 +19,9 @@ function allListRender(lists) {
     listGroupRender(lists, element)
     event.target.classList.add('active')
     event.target.children[0].classList.remove('d-none')
+    event.target.children[0].addEventListener('click', function() {
+      removeListOptions(element)
+    })
   }))
 }
 
