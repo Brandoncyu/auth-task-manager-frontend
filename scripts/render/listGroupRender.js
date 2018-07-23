@@ -12,7 +12,6 @@ function listGroupRender(lists, element) {
 
   taskList.forEach(card => {
     if (card.completed === false) {
-      console.log( card.created_at)
       accumulatorDoing += cardDoing(card.title, card.description, card.id, card.created_at)
     } else {
       accumulatorDone += cardDone(card.title, card.description, card.id, card.updated_at)
