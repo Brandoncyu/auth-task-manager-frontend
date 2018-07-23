@@ -14,4 +14,6 @@ register.addEventListener('click', registrationForm)
 
 listButton.addEventListener('click', listButtonOptions)
 
+
+
 logoutButton.addEventListener('click', logoutOptions)

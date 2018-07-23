@@ -8,8 +8,16 @@ function allListRender(lists) {
   document.getElementById('all-group').innerHTML = accumulator
 
   let listGroup = document.querySelectorAll('.list-group-item')
-  listGroup.forEach(element => element.addEventListener('click', function() {
+
+  listGroup.forEach(element => element.addEventListener('click', function(event) {
+    listGroup.forEach(element => {
+      element.classList.remove('active')
+      element.children[0].classList.add('d-none')
+    })
+
     listGroupRender(lists, element)
+    event.target.classList.add('active')
+    event.target.children[0].classList.remove('d-none')
   }))
 }
 
