@@ -1,5 +1,4 @@
 const allListsTemplate = require('../templates/allLists')
-
 const listGroupRender = require('./listGroupRender')
 const removeListOptions = require('../buttons/removeListOptions')
 
@@ -22,8 +21,9 @@ function allListRender(lists) {
         listGroupRender(lists, listId)
 
         let link = event.target
-        if (link.nodeName !== 'A') 
+        if (link.nodeName !== 'A') {
           link = link.parentNode
+        }
 
         link.classList.add('active')
         link.children[0].classList.add('d-none')
