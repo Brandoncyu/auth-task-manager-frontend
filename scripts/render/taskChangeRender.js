@@ -1,16 +1,16 @@
 function taskChangeRender(newListId) {
   axios.get(`${baseURL}/api/lists`, {
     headers: {
-      authorization: `Bearer ${localStorage.getItem('token')}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     }
   }).then(newResponse => {
-    const listGroupRender = require('./listGroupRender')
+    const listTaskRender = require('./listTaskRender')
     const allListRender = require('./allListRender')
     let lists = newResponse.data.lists
 
     allListRender(lists)
 
-    listGroupRender(lists, newListId)
+    listTaskRender(lists, newListId)
 
     let newListGroupItems = document.querySelectorAll('.list-group-item')
     newListGroupItems.forEach(element => {

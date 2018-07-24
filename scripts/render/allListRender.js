@@ -1,6 +1,6 @@
 const allListsTemplate = require('../templates/allLists')
-const listGroupRender = require('./listGroupRender')
-const removeListOptions = require('../buttons/removeListOptions')
+const listTaskRender = require('./listTaskRender')
+const listRemove = require('../buttons/listRemove')
 
 function allListRender(lists) {
   let accumulator = ''
@@ -18,7 +18,7 @@ function allListRender(lists) {
 
         let listId = element.getAttribute('list-id')
 
-        listGroupRender(lists, listId)
+        listTaskRender(lists, listId)
 
         let link = event.target
         if (link.nodeName !== 'A') {
@@ -35,7 +35,7 @@ function allListRender(lists) {
   removeListButton.forEach(element => {
     element.addEventListener('click', function(event) {
       event.preventDefault()
-      removeListOptions(element)
+      listRemove(element)
     })
   })
 }

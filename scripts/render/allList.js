@@ -4,7 +4,7 @@ const allListRender = require('./allListRender')
 function allList() {
   axios.get(`${baseURL}/api/lists`, {
     headers: {
-      authorization: `Bearer ${localStorage.getItem('token')}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     }
   }).then(response => {
     let lists = response.data.lists

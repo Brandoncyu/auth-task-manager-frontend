@@ -1,6 +1,6 @@
 const renderRegisterError = require('./02-registerError')
 const allList = require('../render/allList')
-const loginOptions = require('../render/loginOptions')
+const loginOptions = require('../options/loginOptions')
 
 function verify(event) {
   event.preventDefault()

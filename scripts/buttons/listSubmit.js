@@ -1,6 +1,6 @@
 const allList = require('../render/allList')
 
-function listFormOptions(event) {
+function listSubmit(event) {
   event.preventDefault()
   let listTitleField = document.getElementById('list-title').value
 
@@ -13,14 +13,17 @@ function listFormOptions(event) {
       title: listTitleField
     }
   }).then(response => {
+
     document.getElementById('list-container').setAttribute('style', 'display:block')
     document.getElementById('form-container').innerHTML = ''
     document.getElementById('all-group').innerHTML = ''
+
     allList()
+    
   }).catch(error => {
     console.log(error)
   })
 
 }
 
-module.exports = listFormOptions
+module.exports = listSubmit
