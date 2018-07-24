@@ -17,7 +17,9 @@ function allListRender(lists) {
           element.children[0].classList.remove('d-none')
         })
 
-        listGroupRender(lists, element)
+        let listId = element.getAttribute('list-id')
+
+        listGroupRender(lists, listId)
 
         let link = event.target
         if (link.nodeName !== 'A') 
