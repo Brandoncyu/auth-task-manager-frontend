@@ -12,6 +12,7 @@ const taskButtonOption = require('./buttons/taskButtonOption')
 const logoutOptions = require('./options/logoutOptions')
 const loginOptions = require('./options/loginOptions')
 const allList = require('./render/allList')
+const urlHashChangeRender = require('./render/urlHashChangeRender')
 
 const login = document.getElementById('login-button')
 const register = document.getElementById('register-button')
@@ -30,3 +31,5 @@ register.addEventListener('click', registrationForm)
 listButton.addEventListener('click', listButtonOptions)
 taskButton.addEventListener('click', taskButtonOption)
 logoutButton.addEventListener('click', logoutOptions)
+
+window.onhashchange = () => urlHashChangeRender()
