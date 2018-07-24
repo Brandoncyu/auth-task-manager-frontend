@@ -14,7 +14,7 @@ function createTaskOptions(event) {
       list_id: dataId
     }
   }).then(response => {
-    const allList = require('./allList')
+    const allList = require('../render/allList')
     document.getElementById('task-title').value = ''
     document.getElementById('task-content').value = ''
     allList()
