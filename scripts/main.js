@@ -5,8 +5,8 @@
 // window.baseURL = `http://localhost:5000`
 window.baseURL = `https://whispering-shore-93216.herokuapp.com`
 
-const loginForm = require('./login/00-loginform')
-const registrationForm = require('./registration/00-registrationform')
+const loginForm = require('./login/00-loginForm')
+const registrationForm = require('./registration/00-registrationForm')
 const listButtonOptions = require('./buttons/listButtonOptions')
 const taskButtonOption = require('./buttons/taskButtonOption')
 const logoutOptions = require('./options/logoutOptions')

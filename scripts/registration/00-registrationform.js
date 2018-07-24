@@ -1,5 +1,5 @@
 const registerTemplate = require('../templates/register')
-const verify = require('./01-passwordverification')
+const verify = require('./01-passwordVerification')
 
 function registrationForm() {
   document.querySelector('title').textContent = 'Register'
