@@ -9,6 +9,8 @@ function logoutOptions() {
   document.getElementById('task-form').innerHTML = ''
   document.getElementById('done-group').innerHTML = ''
   document.getElementById('doing-group').innerHTML = ''
+
+  document.querySelector('title').textContent = 'Sign In'
 }
 
 module.exports = logoutOptions

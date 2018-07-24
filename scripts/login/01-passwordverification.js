@@ -1,5 +1,5 @@
 const renderLoginError = require('./02-loginError')
-const loginOptions = require('../render/loginOptions')
+const loginOptions = require('../options/loginOptions')
 const allList = require('../render/allList')
 
 function verify(event) {

@@ -1,4 +1,4 @@
-function removeListOptions(element) {
+function listRemove(element) {
   const allList = require('../render/allList')
   let listId = element.getAttribute('new-id')
 
@@ -9,9 +9,10 @@ function removeListOptions(element) {
   }).then(response => {
 
     allList()
+    
   }).catch(error => {
     console.log(error)
   })
 }
 
-module.exports = removeListOptions
+module.exports = listRemove

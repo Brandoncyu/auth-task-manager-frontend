@@ -1,5 +1,17 @@
-textarea {
-  white-space: pre-line;
+body {
+  background: url('https://images.unsplash.com/photo-1523266092241-0077129f31fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1a7d7daad181fb9f0e5f61836a8639b9&auto=format&fit=crop&w=1049&q=80');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+}
+
+div.col-6 {
+  background-color: rgba(255, 255, 255, 0.95)
+}
+
+div.card {
+  background-color: rgba(255, 255, 255, 0.95)
 }
 
 h3.text-center {
@@ -10,14 +22,6 @@ h3.text-center {
   box-shadow: 2px 4px gray;
 }
 
-body {
-  background: url('https://images.unsplash.com/photo-1523266092241-0077129f31fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1a7d7daad181fb9f0e5f61836a8639b9&auto=format&fit=crop&w=1049&q=80');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  height: 100%;
-}
-
 html {
   height: 100%;
 }
@@ -26,14 +30,10 @@ nav {
   background-color: rgba(255, 255, 255, 0.95)
 }
 
-div.col-6 {
-  background-color: rgba(255, 255, 255, 0.95)
+p.card-text {
+  white-space: pre-line;
 }
 
 #task-form {
-  background-color: rgba(255, 255, 255, 0.95)
-}
-
-div.card {
   background-color: rgba(255, 255, 255, 0.95)
 }
