@@ -1,123 +1,111 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <meta charset="utf-8">
-  <title>Sign In</title>
-  <!DOCTYPE html>
-  <html>
-
   <head>
     <meta charset="utf-8">
-    <title>Sign In</title>
-    <!DOCTYPE html>
-    <html>
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="icon" href="./favicon.ico">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer="defer" src="bundle.js" charset="utf-8"></script>
 
-    <head>
-      <meta charset="utf-8">
-      <title>Sign In</title>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-      <link rel="stylesheet" href="./styles/styles.css">
-      <link rel="icon" href="./favicon.ico">
-      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-      <script defer="defer" src="bundle.js" charset="utf-8"></script>
+  </head>
 
-    </head>
+  <body>
 
-    <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-light">
+      <a class="navbar-brand" href="#">
+        <img src="././images/favicon-1024.png" width="30" height="30" class="d-inline-block align-top">
+        TASK MANAGER
+      </a>
 
-      <!-- NAVBAR -->
-      <nav class="navbar navbar-light">
-        <a class="navbar-brand" href="#">
-                <img src="././images/favicon-1024.png" width="30" height="30" class="d-inline-block align-top">
-                TASK MANAGER
-              </a>
+      <!-- NAVBAR BUTTONS -->
+      <div id="nav-buttons">
 
-        <!-- NAVBAR BUTTONS -->
-        <div id="nav-buttons">
+        <span id="gate-buttons" style="display: none">
+          <button id="task-button" type="button" class="btn btn-outline-warning m-2">All Tasks</button>
+          <button id="list-button" type="button" class="btn btn-outline-success m-2">New List</button>
+          <button id="logout-button" type="button" class="btn btn-outline-danger m-2">Logout</button>
+        </span>
 
-          <span id="gate-buttons" style="display: none">
-                  <button id="task-button" type="button" class="btn btn-outline-warning m-2">All Tasks</button>
-                  <button id="list-button" type="button" class="btn btn-outline-success m-2">New List</button>
-                  <button id="logout-button" type="button" class="btn btn-outline-danger m-2">Logout</button>
-                </span>
+        <span id="key-buttons" style="display: block">
+          <button id="login-button" type="button" class="btn btn-outline-primary m-2">Login</button>
+          <button id="register-button" type="button" class="btn btn-outline-info m-2">Register</button>
+        </span>
 
-          <span id="key-buttons" style="display: block">
-                  <button id="login-button" type="button" class="btn btn-outline-primary m-2">Login</button>
-                  <button id="register-button" type="button" class="btn btn-outline-info m-2">Register</button>
-                </span>
+      </div>
+    </nav>
+
+    <!-- LOGIN & REGISTER & LIST FORM CONTAINER -->
+    <div class="container-fluid">
+      <div class="row justify-content-center my-2" id="form-container"></div>
+    </div>
+
+    <!-- LIST & TASKS CONTAINER -->
+    <div class="container-fluid" style="display:none" id="list-container">
+      <div class="row justify-content-center">
+
+        <!-- LISTS & TASKS COLUMN -->
+        <div class="col" id="all-list">
+          <h3 class="text-center">All Lists</h3>
+
+          <!-- ALL LISTS -->
+          <div class="list-group" id="all-group"></div>
+
+          <!-- TASKS FORM -->
+          <div id='task-form'></div>
 
         </div>
-      </nav>
 
-      <!-- LOGIN & REGISTER & LIST FORM CONTAINER -->
-      <div class="container-fluid">
-        <div class="row justify-content-center my-2" id="form-container"></div>
-      </div>
+        <!-- DOING COLUMN -->
+        <div class="col" id="doing">
+          <h3 class="text-center">Doing</h3>
+          <div id="doing-group">
 
-      <!-- LIST & TASKS CONTAINER -->
-      <div class="container-fluid" style="display:none" id="list-container">
-        <div class="row justify-content-center">
+            <!-- DOING CARDS -->
 
-          <!-- LISTS & TASKS COLUMN -->
-          <div class="col" id="all-list">
-            <h3 class="text-center">All Lists</h3>
-
-            <!-- ALL LISTS -->
-            <div class="list-group" id="all-group"></div>
-
-            <!-- TASKS FORM -->
-            <div id='task-form'></div>
+            <div class="card mt-2">
+              <div class="card-body">
+                <h5 class="card-title">Doing Title</h5>
+                <hr>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <button id="doing-complete-button" type="submit" class="btn btn-success">Completed</button>
+              </div>
+              <div class="card-footer text-muted">
+                2 days ago
+              </div>
+            </div>
 
           </div>
 
-          <!-- DOING COLUMN -->
-          <div class="col" id="doing">
-            <h3 class="text-center">Doing</h3>
-            <div id="doing-group">
+        </div>
 
-              <!-- DOING CARDS -->
+        <!-- DOING COLUMN -->
+        <div class="col" id="done">
+          <h3 class="text-center">Done</h3>
+          <div id="done-group">
 
-              <div class="card mt-2">
-                <div class="card-body">
-                  <h5 class="card-title">Doing Title</h5>
-                  <hr>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <button id="doing-complete-button" type="submit" class="btn btn-success">Completed</button>
-                </div>
-                <div class="card-footer text-muted">
-                  2 days ago
-                </div>
+            <!-- DONE CARDS -->
+            <div class="card mt-2">
+              <div class="card-body">
+                <h5 class="card-title">Done Title</h5>
+                <hr>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <button id="done-remove-button" type="submit" class="btn btn-danger">Remove</button>
+              </div>
+              <div class="card-footer text-muted">
+                2 days ago
               </div>
 
             </div>
 
           </div>
-
-          <!-- DOING COLUMN -->
-          <div class="col" id="done">
-            <h3 class="text-center">Done</h3>
-            <div id="done-group">
-
-              <!-- DONE CARDS -->
-              <div class="card mt-2">
-                <div class="card-body">
-                  <h5 class="card-title">Done Title</h5>
-                  <hr>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <button id="done-remove-button" type="submit" class="btn btn-danger">Remove</button>
-                </div>
-                <div class="card-footer text-muted">
-                  2 days ago
-                </div>
-
-              </div>
-
-            </div>
-          </div>
         </div>
       </div>
+    </div>
 
-    </body>
+  </body>
 
-    </html>
+</html>
