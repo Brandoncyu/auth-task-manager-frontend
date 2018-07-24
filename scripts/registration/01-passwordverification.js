@@ -1,6 +1,5 @@
 const renderRegisterError = require('./02-registerError')
-const allList = require('../render/allList')
-const loginOptions = require('../options/loginOptions')
+const loginForm = require('../login/00-loginForm')
 
 function verify(event) {
   event.preventDefault()
@@ -18,8 +17,8 @@ function verify(event) {
   }).then(response => {
     const token = localStorage.setItem('token', response.data.token)
 
-    loginOptions()
-    allList()
+    loginForm()
+    document.getElementById('login-email').value = loginField
 
   }).catch(error => {
     renderRegisterError(error)

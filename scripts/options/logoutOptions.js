@@ -1,3 +1,5 @@
+const loginForm = require('../login/00-loginForm')
+
 function logoutOptions() {
   localStorage.removeItem('token')
   document.getElementById('gate-buttons').setAttribute('style', 'display:none')
@@ -11,6 +13,9 @@ function logoutOptions() {
   document.getElementById('doing-group').innerHTML = ''
 
   document.querySelector('title').textContent = 'Sign In'
+
+  window.location.href = window.location.origin
+
 }
 
 module.exports = logoutOptions
