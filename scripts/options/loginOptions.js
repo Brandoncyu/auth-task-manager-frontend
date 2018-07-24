@@ -1,5 +1,3 @@
-// const loginForm = require('../login/loginForm')
-
 function loginOptions() {
   document.getElementById('gate-buttons').setAttribute('style', 'display:block')
   document.getElementById('key-buttons').setAttribute('style', 'display:none')
