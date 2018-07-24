@@ -1,8 +1,3 @@
-// const localhostURL = 'http://localhost:5000'
-// const herokuURL = 'https://whispering-shore-93216.herokuapp.com'
-// const baseURL = window.location.href.includes('herokuapp') ? herokuURL : localhostURL
-
-// window.baseURL = `http://localhost:5000`
 window.baseURL = `https://whispering-shore-93216.herokuapp.com`
 
 const verify = require('./login/01-passwordVerification')
@@ -15,9 +10,9 @@ const loginOptions = require('./options/loginOptions')
 const allList = require('./render/allList')
 const urlHashChangeRender = require('./render/urlHashChangeRender')
 
-const loginButton = document.getElementById('login')
-const login = document.getElementById('login-button')
-const register = document.getElementById('register-button')
+const loginFormButton = document.getElementById('login')
+const loginButton = document.getElementById('login-button')
+const registerButton = document.getElementById('register-button')
 const listButton = document.getElementById('list-button')
 const taskButton = document.getElementById('task-button')
 const logoutButton = document.getElementById('logout-button')
@@ -27,10 +22,10 @@ if (localStorage.getItem('token') !== null) {
   allList()
 }
 
-loginButton.addEventListener('submit', verify)
+loginFormButton.addEventListener('submit', verify)
 
-login.addEventListener('click', loginForm)
-register.addEventListener('click', registrationForm)
+loginButton.addEventListener('click', loginForm)
+registerButton.addEventListener('click', registrationForm)
 
 listButton.addEventListener('click', listButtonOptions)
 taskButton.addEventListener('click', taskButtonOption)
