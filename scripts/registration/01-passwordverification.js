@@ -1,5 +1,6 @@
 const renderRegisterError = require('./02-registerError')
 const allList = require('../render/allList')
+const loginOptions = require('../render/loginOptions')
 
 function verify(event) {
   event.preventDefault()
@@ -16,12 +17,8 @@ function verify(event) {
     password: passwordField
   }).then(response => {
     const token = localStorage.setItem('token', response.data.token)
-    document.getElementById('gate-buttons').setAttribute('style', 'display:block')
-    document.getElementById('key-buttons').setAttribute('style', 'display:none')
 
-    document.getElementById('form-container').innerHTML = ''
-    document.getElementById('list-container').setAttribute('style', 'display:block')
-
+    loginOptions()
     allList()
 
   }).catch(error => {

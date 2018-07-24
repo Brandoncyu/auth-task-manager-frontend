@@ -4,6 +4,8 @@ function loginOptions() {
 
   document.getElementById('form-container').innerHTML = ''
   document.getElementById('list-container').setAttribute('style', 'display:block')
+
+  document.querySelector('title').textContent = 'Task Manager'
 }
 
 module.exports = loginOptions
