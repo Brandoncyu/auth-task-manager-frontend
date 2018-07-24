@@ -5,6 +5,7 @@
 // window.baseURL = `http://localhost:5000`
 window.baseURL = `https://whispering-shore-93216.herokuapp.com`
 
+const verify = require('./login/01-passwordVerification')
 const loginForm = require('./login/00-loginForm')
 const registrationForm = require('./registration/00-registrationForm')
 const listButtonOptions = require('./buttons/listButtonOptions')
@@ -14,6 +15,7 @@ const loginOptions = require('./options/loginOptions')
 const allList = require('./render/allList')
 const urlHashChangeRender = require('./render/urlHashChangeRender')
 
+const loginButton = document.getElementById('login')
 const login = document.getElementById('login-button')
 const register = document.getElementById('register-button')
 const listButton = document.getElementById('list-button')
@@ -24,6 +26,8 @@ if (localStorage.getItem('token') !== null) {
   loginOptions()
   allList()
 }
+
+loginButton.addEventListener('submit', verify)
 
 login.addEventListener('click', loginForm)
 register.addEventListener('click', registrationForm)
