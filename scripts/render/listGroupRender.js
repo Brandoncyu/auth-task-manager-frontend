@@ -5,17 +5,16 @@ const taskCompleted = require('../buttons/taskCompleted')
 const taskRemoved = require('../buttons/taskRemoved')
 const taskCreate = require('../buttons/taskCreate')
 
-
 const moment = require('moment')
 
-function listGroupRender(lists, element) {
+function listGroupRender(lists, listId) {
   document.getElementById('task-form').innerHTML = createNewTaskTemplate()
-  let listId = element.getAttribute('list-id')
+
   let createTaskForm = document.getElementById('create-task-form')
 
-  createTaskForm.addEventListener('submit', function(event){
+  createTaskForm.addEventListener('submit', function(event) {
     event.preventDefault()
-    taskCreate(element)
+    taskCreate(listId)
   })
 
   let taskList = lists.find(task => task.id === parseInt(listId)).tasks
@@ -33,10 +32,9 @@ function listGroupRender(lists, element) {
       accumulatorDone += cardDone(card.title, card.description, card.id, card.list_id, updatedTime)
     }
   })
-  
+
   document.getElementById('doing-group').innerHTML = accumulatorDoing
   document.getElementById('done-group').innerHTML = accumulatorDone
-
 
   let completeButtons = document.querySelectorAll('#doing-complete-button')
   completeButtons.forEach(element => {

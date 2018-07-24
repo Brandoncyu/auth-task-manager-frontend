@@ -1,7 +1,8 @@
-function taskCreate (element) {
+const taskChangeRender = require('../render/taskChangeRender')
+
+function taskCreate(listId) {
   let taskTitle = document.getElementById('task-title').value
   let taskContent = document.getElementById('task-content').value
-  let listId = element.getAttribute('list-id')
 
   axios(`${baseURL}/api/lists/${listId}/tasks`, {
     method: `POST`,
@@ -14,11 +15,11 @@ function taskCreate (element) {
       list_id: listId
     }
   }).then(response => {
-    const allList = require('../render/allList')
     document.getElementById('task-title').value = ''
     document.getElementById('task-content').value = ''
-    allList()
 
+    let newListId = response.data.task.list_id
+    taskChangeRender(newListId)
   }).catch(error => {
     console.log(error)
   })
