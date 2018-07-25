@@ -1,5 +1,5 @@
 const renderLoginError = require('./02-loginError')
-const loginOptions = require('../options/loginOptions')
+const loginMode = require('../modes/loginMode')
 const allList = require('../render/allList')
 
 function verify(event) {
@@ -12,7 +12,7 @@ function verify(event) {
     password: passwordField
   }).then(response => {
     const token = localStorage.setItem('token', response.data.token)
-    loginOptions()
+    loginMode()
     allList()
 
   }).catch(error => {

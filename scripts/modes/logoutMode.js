@@ -1,4 +1,4 @@
-function logoutOptions() {
+function logoutMode() {
   localStorage.removeItem('token')
   document.getElementById('gate-buttons').setAttribute('style', 'display:none')
   document.getElementById('key-buttons').setAttribute('style', 'display:block')
@@ -15,4 +15,4 @@ function logoutOptions() {
   window.location.href = window.location.origin
 }
 
-module.exports = logoutOptions
+module.exports = logoutMode
