@@ -1,5 +1,6 @@
 const renderRegisterError = require('./02-registerError')
-const loginForm = require('../login/00-loginForm')
+const loginMode = require('../modes/loginMode')
+const listButtonOptions = require('../buttons/listButtonOptions')
 
 function verify(event) {
   event.preventDefault()
@@ -16,9 +17,9 @@ function verify(event) {
     password: passwordField
   }).then(response => {
     const token = localStorage.setItem('token', response.data.token)
-
-    loginForm()
-    document.getElementById('login-email').value = loginField
+    loginMode()
+    listButtonOptions()
+    document.querySelector('h3').innerHTML = "Create Your First List"
 
   }).catch(error => {
     renderRegisterError(error)
