@@ -1,8 +1,8 @@
-const logoutOptions = require('../options/logoutOptions')
+const logoutMode = require('../modes/logoutMode')
 
 function urlHashChangeRender() {
   if (!window.location.hash.includes('#/lists/')) {
-    logoutOptions()
+    logoutMode()
   }
   let urlId = parseInt(window.location.hash.split('#/lists/')[1])
 
@@ -12,14 +12,14 @@ function urlHashChangeRender() {
     }
   }).then(response => {
     const taskChangeRender = require('./taskChangeRender')
-    const logoutOptions = require('../options/logoutOptions')
+    const logoutMode = require('../modes/logoutMode')
     let lists = response.data.lists
     let reducedList = lists.map(element => element.id)
 
     if (reducedList.includes(urlId)) {
       taskChangeRender(urlId)
     } else {
-      logoutOptions()
+      logoutMode()
     }
 
   }).catch(error => console.log(error))

@@ -5,8 +5,8 @@ const loginForm = require('./login/00-loginForm')
 const registrationForm = require('./registration/00-registrationForm')
 const listButtonOptions = require('./buttons/listButtonOptions')
 const taskButtonOption = require('./buttons/taskButtonOption')
-const logoutOptions = require('./options/logoutOptions')
-const loginOptions = require('./options/loginOptions')
+const logoutMode = require('./modes/logoutMode')
+const loginMode = require('./modes/loginMode')
 const allList = require('./render/allList')
 const urlHashChangeRender = require('./render/urlHashChangeRender')
 
@@ -18,7 +18,7 @@ const taskButton = document.getElementById('task-button')
 const logoutButton = document.getElementById('logout-button')
 
 if (localStorage.getItem('token') !== null) {
-  loginOptions()
+  loginMode()
   allList()
 }
 
@@ -29,6 +29,6 @@ registerButton.addEventListener('click', registrationForm)
 
 listButton.addEventListener('click', listButtonOptions)
 taskButton.addEventListener('click', taskButtonOption)
-logoutButton.addEventListener('click', logoutOptions)
+logoutButton.addEventListener('click', logoutMode)
 
 window.onhashchange = () => urlHashChangeRender()
