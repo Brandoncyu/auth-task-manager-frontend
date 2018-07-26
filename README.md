@@ -1,41 +1,64 @@
-# auth-task-manager-frontend
+# Task Manager
 
-This repository is designed to demonstrate how to implement authentication and authorization on the backend of a Node and Express application. You will build the client for this application to build a fully featured Full Stack project with authentication and authorization.
+Task Manager is a fully featured Full Stack project designed to demonstrate how to implement authentication and authorization.
 
-## Installation
+This application allows users to create unique accounts, create multiple task lists, and add individual tasks to the aforementioned lists. Users also have the opportunity to mark tasks as "completed" and remove lists and tasks altogether. Each set of created lists are uniquely assigned and saved to the user's account, and a username and password will be required to access the information.
+
+Task Manager uses DOM manipulation, authentication, authorization, axios calls in the front-end design. The front-end is deployed to Surge, while the back-end is deployed to Heroku.
+
+## Pages
+
+![Login Page](images/login-page.png)
+![Register Page](images/register-page.png)
+![Features Page](images/features-page.png)
+
+## Key Features
+
+* Login page allows existing user to login and provides error handling for login if any of the information is invalid
+* Register page allows a new user to register and provides error handling for register if any of the information is missing or the email is taken
+* When a user successfully registers, they will be automatically logged in and prompted to create their first list
+* When a user returns to the page and still has a valid token, they are logged in, and presented with a page that shows all their lists
+* Users can navigate between lists and tasks
+* Users can create and delete lists
+* Users can create, complete, delete tasks
+* Users are provided with an error for creating new lists or tass if the title is missing
+* Users can not access information for another user's lists and will automatically logout if they enter the wrong list id in the URL
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### The Backend
+
+The backend can be found at: https://whispering-shore-93216.herokuapp.com
+
+### Installation
+
+What things you need to install the software and how to install them
 
 1. Fork and/or Clone this repository
-
 1. `npm install`
+1. `npm run dev`
 
-1. `mv .env.sample .env`
+## Deployment
 
-1. `createdb galvanize_task_tracker_dev && createdb galvanize_task_tracker_test`
+This project has been deployed on surge:
+* taskmanagerwb.surge.sh
 
-1. `npm test`
+## Built With
 
-All the tests should pass for the project.
+* [Bootstrap](https://getbootstrap.com/) - 
+* [Axios](https://www.npmjs.com/package/axios)
+* [Browserify](http://browserify.org/)
+* [Watchify](https://www.npmjs.com/package/watchify)
+* [Live-server](https://www.npmjs.com/package/live-server)
+* [Moment](https://momentjs.com/)
 
-## Project Description
+## Contributing
 
-You will be adding the frontend to this project so that it is a fully working application. You must:
+Please send either of the developers a message for details on our code of conduct, and the process for submitting pull requests.
 
-- [ ] Have a Login page that allows an existing user to login
-- [ ] Provide error handling for login if any of the information is missing
-- [ ] Have a Register page that allows a new user to register
-- [ ] Provide error handling for register if any of the information is missing
-- [ ] When a user successfully registers, they will then be automatically logged in
-- [ ] When a user successfully registers, they are prompted to create their first list
-- [ ] When a user returns to the page and still has a valid token, they are logged in
-- [ ] When a user logs in, they are presented with a page that shows all their lists
-- [ ] When a user logs in, they are presented with the tasks from one of their lists
-- [ ] Users can navigate between lists
-- [ ] Users can create new lists
-- [ ] Provide error handling for creating new lists if the title is missing
-- [ ] Users can create new tasks
-- [ ] Provide error handling for creating new tasks if the title is missing
-- [ ] Users can complete tasks
-- [ ] Users can delete tasks
-- [ ] Users are not able to access information for another user's lists
+## Authors
 
-For an example of some of the features, you can watch [this video](https://youtu.be/22v7oG7ivn0).
+* **Wendy Parsons** - [Contact](wsparsons@gmail.com)
+* **Brandon Yu** - [Contact](brandoncyu@gmail.com)
