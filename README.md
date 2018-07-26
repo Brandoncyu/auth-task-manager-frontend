@@ -4,7 +4,7 @@ Task Manager is a fully featured Full Stack project designed to demonstrate how 
 
 This application allows users to create unique accounts, create multiple task lists, and add individual tasks to the aforementioned lists. Users also have the opportunity to mark tasks as "completed" and remove lists and tasks altogether. Each set of created lists are uniquely assigned and saved to the user's account, and a username and password will be required to access the information.
 
-Task Manager uses DOM manipulation, authentication, authorization, axios calls in the front-end design. The front-end is deployed to Surge, while the back-end is deployed to Heroku.
+Task Manager uses DOM manipulation, authentication, authorization, and axios calls in the front-end design. The front-end is deployed to Surge, while the back-end is deployed to Heroku.
 
 ## Pages
 
@@ -35,19 +35,20 @@ The backend can be found at: https://whispering-shore-93216.herokuapp.com
 ### Installation
 
 What things you need to install the software and how to install them
-
-1. Fork and/or Clone this repository
-1. `npm install`
-1. `npm run dev`
+```shell
+* Fork and/or Clone this repository
+* `npm install`
+* `npm run dev`
+```
 
 ## Deployment
 
 This project has been deployed on surge:
-* taskmanagerwb.surge.sh
+* [taskmanagerwb.surge.sh](taskmanagerwb.surge.sh)
 
 ## Built With
 
-* [Bootstrap](https://getbootstrap.com/) - 
+* [Bootstrap](https://getbootstrap.com/)
 * [Axios](https://www.npmjs.com/package/axios)
 * [Browserify](http://browserify.org/)
 * [Watchify](https://www.npmjs.com/package/watchify)
@@ -60,5 +61,5 @@ Please send either of the developers a message for details on our code of conduc
 
 ## Authors
 
-* **Wendy Parsons** - [Contact](wsparsons@gmail.com)
-* **Brandon Yu** - [Contact](brandoncyu@gmail.com)
+* **Wendy Parsons** wsparsons@gmail.com
+* **Brandon Yu** brandoncyu@gmail.com
