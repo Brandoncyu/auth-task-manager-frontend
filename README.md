@@ -15,7 +15,7 @@ Task Manager uses DOM manipulation, authentication, authorization, and axios cal
 ## Key Features
 
 * Login page allows existing user to login and provides error handling for login if any of the information is invalid
-* Register page allows a new user to register and provides error handling for registeration if any of the information is missing or the email is registered
+* Register page allows a new user to register and provides error handling for registeration if any of the information is missing or the email has been registered with another account
 * When a user successfully registers, they will be automatically logged in and prompted to create their first list
 * When a user returns to the page and still has a valid token, they are logged in, and presented with a page that shows all their lists
 * Users can navigate between lists and tasks
