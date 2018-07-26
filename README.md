@@ -43,8 +43,7 @@ What things you need to install the software and how to install them
 
 ## Deployment
 
-This project has been deployed on surge:
-* [taskmanagerwb.surge.sh](taskmanagerwb.surge.sh)
+This project has been deployed on surge: [taskmanagerwb.surge.sh](taskmanagerwb.surge.sh)
 
 ## Built With
 
