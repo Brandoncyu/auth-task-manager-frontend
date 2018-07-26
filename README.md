@@ -1,6 +1,6 @@
 # Task Manager
 
-Task Manager is a fully featured Full Stack project designed to demonstrate how to implement authentication and authorization.
+Task Manager is a fully-featured Full-Stack project designed to demonstrate how to implement authentication and authorization.
 
 This application allows users to create unique accounts, create multiple task lists, and add individual tasks to the aforementioned lists. Users also have the opportunity to mark tasks as "completed" and remove lists and tasks altogether. Each set of created lists are uniquely assigned and saved to the user's account, and a username and password will be required to access the information.
 
