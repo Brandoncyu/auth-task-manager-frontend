@@ -14,14 +14,14 @@ Task Manager uses DOM manipulation, authentication, authorization, and axios cal
 
 ## Key Features
 
-* Login page allows existing user to login and provides error handling for login if any of the information is invalid
+* Login page allows existing user to login and provides an error if any of the information is invalid
 * Register page allows a new user to register and provides error handling for registeration if any of the information is missing or the email has been registered with another account
 * When a user successfully registers, they will be automatically logged in and prompted to create their first list
 * When a user returns to the page and still has a valid token, they are logged in, and presented with a page that shows all their lists
 * Users can navigate between lists and tasks
 * Users can create and delete lists
 * Users can create, complete, and delete tasks
-* Users are provided with an error for creating new lists or tass if the title is missing
+* Users are provided with an error for creating new lists or tasks if the title is missing
 * Users can not access information for another user's lists and will automatically logout if they enter the wrong list id in the URL
 
 ## Getting Started
